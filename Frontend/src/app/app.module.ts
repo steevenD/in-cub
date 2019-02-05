@@ -1,7 +1,7 @@
 import { InMemoryDataService } from './shared/services/in-memory-data.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HandleStartupComponent } from './startup/view/handle-startup/handle-startup.component';
