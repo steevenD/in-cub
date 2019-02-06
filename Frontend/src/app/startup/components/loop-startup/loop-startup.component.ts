@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {Startup} from "../../startup.model";
-import {MatPaginator, MatTableDataSource} from "@angular/material";
-import { AddressPipe } from "../../pipes/address.pipe";
+import {Startup} from '../../startup.model';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { AddressPipe } from '../../pipes/address.pipe';
 
 @Component({
   selector: 'app-loop-startup',
@@ -13,7 +13,9 @@ export class LoopStartupComponent implements OnInit {
   @Input()
   startUps: Startup[];
 
-  /**
+
+  displayForm = false;
+   /**
    * TODO not changed this name
    */
   displayedColumns: string[] = ['name', 'legalRepresentativeName',
