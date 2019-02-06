@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ConsultantService} from "../../services/consultant.service";
 
 @Component({
   selector: 'app-handle-consultant',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HandleConsultantComponent implements OnInit {
 
-  constructor() { }
+  constructor(private consultantService: ConsultantService) { }
 
   ngOnInit() {
+    this.getConsultant();
+  }
+
+  getConsultant() {
+    console.log(this.consultantService.getConsultants());
   }
 
 }
