@@ -64,7 +64,7 @@ import {MatPaginatorModule, MatTableModule} from "@angular/material";
     MatButtonModule,
     MatTooltipModule
   ],
-  providers: [],
+  providers: [AddressPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

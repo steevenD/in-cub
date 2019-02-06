@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Startup} from "../../startup.model";
 import {MatPaginator, MatTableDataSource} from "@angular/material";
+import { AddressPipe } from "../../pipes/address.pipe";
 
 @Component({
   selector: 'app-loop-startup',
@@ -12,7 +13,8 @@ export class LoopStartupComponent implements OnInit {
   @Input()
   startUps: Startup[];
 
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['name', 'legalRepresentativeName', 'cofounderNumber', 'description', 'address', 'nameConsultant', 'actions'];
+
   dataSource = new MatTableDataSource<Startup>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
