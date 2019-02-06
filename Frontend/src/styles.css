@@ -5,3 +5,7 @@
   cursor: pointer;
 }
 
+table.mat-table {
+  width: 100% !important;
+}
+
