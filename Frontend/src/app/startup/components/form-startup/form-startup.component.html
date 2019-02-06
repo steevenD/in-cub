@@ -1,4 +1,4 @@
-<form  class="formStartup" *ngIf="fGroup" [formGroup]="fGroup">
+<form *ngIf="fGroup" [formGroup]="fGroup">
   <div class="example-container">
     <div class="flex jc-sb">
       <mat-form-field>
@@ -41,7 +41,7 @@
 
       <mat-form-field>
         <mat-select placeholder="Consultant *" [formControl]="fGroup.get('consultant')">
-          <mat-option *ngFor="let consultant of consultants" [value]="consultant">{{consultant.firstname + ' ' + consultant.lastname}}</mat-option>
+          <mat-option *ngFor="let consultant of consultants" [value]="consultant.id">{{consultant.firstname + ' ' + consultant.lastname}}</mat-option>
         </mat-select>
         <mat-error *ngIf="fGroup.get('consultant').hasError('required')">The field is required</mat-error>
       </mat-form-field>

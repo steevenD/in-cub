@@ -35,7 +35,7 @@ import {
   MatGridListModule,
   MatListModule,
   MatFormFieldModule,
-  MatOptionModule, MatSelectModule, MatInputModule
+  MatOptionModule, MatSelectModule, MatInputModule, MatDialogModule
 } from '@angular/material';
 import {ReactiveFormsModule} from "@angular/forms";
 import { CreateStartupComponent } from './startup/components/create-startup/create-startup.component';
@@ -65,6 +65,7 @@ import { UpdateStartupComponent } from './startup/components/update-startup/upda
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
     MatTableModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -90,6 +91,7 @@ import { UpdateStartupComponent } from './startup/components/update-startup/upda
     AddressPipe,
     NumberCofounderPipe
   ],
+  entryComponents: [UpdateStartupComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
