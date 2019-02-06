@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Consultant } from "../../consultant.model";
-import { ConsultantService} from "../../services/consultant.service";
+import { Consultant } from '../../consultant.model';
+import { ConsultantService} from '../../services/consultant.service';
 
 
 @Component({
@@ -39,9 +39,6 @@ export class RowConsultantComponent implements OnInit {
   handleClickDeleteConsultant(idConsultant: number) {
     console.log(idConsultant);
     this.consultantService.deleteConsultant(idConsultant).subscribe();
-    this.consultantService.getConsultants().subscribe(consultants => {
-      this.consultantService.consultants.next(consultants);
-    });
   }
 
   /**
