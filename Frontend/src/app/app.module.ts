@@ -24,6 +24,11 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { LoginComponent } from './auth/views/login/login.component';
 import { RegisterComponent } from './auth/views/register/register.component';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +55,11 @@ import { RegisterComponent } from './auth/views/register/register.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
-    )
+    ),
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
