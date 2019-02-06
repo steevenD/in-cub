@@ -13,7 +13,7 @@ export class LoopConsultantComponent implements OnInit {
   @Input()
   consultants: Consultant[];
 
-  displayedColumns: string[] = ['firstname', 'lastname', 'description'];
+  displayedColumns: string[] = ['firstname', 'lastname', 'description', 'actions'];
 
   dataSource = new MatTableDataSource<Consultant>();
 
@@ -24,6 +24,15 @@ export class LoopConsultantComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Consultant>(this.consultants);
     this.dataSource.paginator = this.paginator;
+  }
+
+  translateRow(row: string){
+    switch (row) {
+      case 'firstname': return 'Firstname';
+      case 'lastname': return 'Lastname';
+      case 'description': return 'Description';
+      case 'actions': return '';
+    }
   }
 
 }

@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'consultant/new', component: FormConsultantComponent, data: {title: 'Add consultant'}},
   { path: 'login', component: LoginComponent, data: {title: 'Login'}},
   { path: 'register', component: RegisterComponent, data: {title: 'Register'}},
-  { path: 'notFound', component: NotFoundComponent, data: {title: 'Error'}}
+  { path: 'notFound', component: NotFoundComponent, data: {title: 'Error'}},
+  { path: '**', redirectTo: 'notFound'}
 ];
 
 

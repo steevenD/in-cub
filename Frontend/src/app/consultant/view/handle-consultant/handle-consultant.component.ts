@@ -1,5 +1,6 @@
 import { Consultant } from './../../consultant.model';
 import { Component, OnInit } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 import {ConsultantService} from '../../services/consultant.service';
 
 @Component({
@@ -20,7 +21,6 @@ export class HandleConsultantComponent implements OnInit {
   getConsultant() {
     this.consultantService.getConsultants().subscribe(consultants => {
       this.consultants = consultants;
-      console.log(this.consultants);
     });
   }
 

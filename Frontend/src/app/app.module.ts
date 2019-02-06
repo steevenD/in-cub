@@ -27,6 +27,7 @@ import { RegisterComponent } from './auth/views/register/register.component';
 import { MatPaginatorModule, MatTableModule, MatToolbarModule, MatIconModule,
   MatButtonModule, MatTooltipModule, MatCardModule, MatGridListModule, MatListModule } from '@angular/material';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +65,9 @@ import { MatPaginatorModule, MatTableModule, MatToolbarModule, MatIconModule,
     MatGridListModule,
     MatListModule
   ],
-  providers: [AddressPipe],
+  providers: [
+    AddressPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

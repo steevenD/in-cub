@@ -44,7 +44,7 @@ export class RowStartupComponent implements OnInit {
   }
 
   /**
-   * to update a starup
+   * to update a startup
    * @param idStartup
    */
   handleClickUpdateStartup(idStartup: number) {
