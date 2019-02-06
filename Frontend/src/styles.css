@@ -9,3 +9,15 @@ table.mat-table {
   width: 100% !important;
 }
 
+.flex {
+  display: flex !important;
+}
+
+.fd-c {
+  flex-direction: column !important;
+}
+
+span button.mat-raised-button {
+  margin: 5px !important;
+  width: 120px !important;
+}
