@@ -66,7 +66,8 @@ import { MatPaginatorModule, MatTableModule, MatToolbarModule, MatIconModule,
     MatListModule
   ],
   providers: [
-    AddressPipe
+    AddressPipe,
+    NumberCofounderPipe
   ],
   bootstrap: [AppComponent]
 })
