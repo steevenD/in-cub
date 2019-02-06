@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { InMemoryDataService } from './shared/services/in-memory-data.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -45,6 +46,7 @@ import { RegisterComponent } from './auth/views/register/register.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
