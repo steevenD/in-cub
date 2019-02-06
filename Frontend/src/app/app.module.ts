@@ -24,13 +24,8 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { LoginComponent } from './auth/views/login/login.component';
 import { RegisterComponent } from './auth/views/register/register.component';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule, MatTableModule, MatToolbarModule, MatIconModule,
+  MatButtonModule, MatTooltipModule, MatCardModule, MatGridListModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -53,6 +48,8 @@ import { MatListModule } from '@angular/material/list';
   ],
   imports: [
     BrowserModule,
+    MatTableModule,
+    MatPaginatorModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

@@ -7,7 +7,7 @@ export class Startup {
   legalRepresentativeName: string;
   cofounderNumber: number;
   description: string;
-  address: string;
+  address?: string = null;
   consultant: Consultant;
 
   constructor(
