@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ConsultantService} from "../../../consultant/services/consultant.service";
+import {Consultant} from "../../../consultant/consultant.model";
 
 @Component({
   selector: 'app-form-startup',
@@ -8,15 +10,22 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class FormStartupComponent implements OnInit {
 
+  consultants: Consultant[];
+
   @Input()
   fGroup: FormGroup;
 
-  constructor() { }
+  constructor(private consultantService: ConsultantService) { }
 
   ngOnInit() {
-    console.log(this.fGroup.get('name'));
+    this.getAllConsultants();
   }
 
+  getAllConsultants() {
+    this.consultantService.getConsultants().subscribe( consultants => {
+      this.consultants = consultants;
+    })
+  }
 
 
 
