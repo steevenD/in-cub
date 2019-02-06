@@ -41,6 +41,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { CreateStartupComponent } from './startup/components/create-startup/create-startup.component';
 import { UpdateStartupComponent } from './startup/components/update-startup/update-startup.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +86,10 @@ import { UpdateStartupComponent } from './startup/components/update-startup/upda
     MatGridListModule,
     MatListModule
   ],
-  providers: [AddressPipe],
+  providers: [
+    AddressPipe,
+    NumberCofounderPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
