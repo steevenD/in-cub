@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import {ConsultantMockService} from '../../shared/services/mock/consultant-mock.service';
 import {Consultant} from '../consultant.model';
 
 @Injectable({
@@ -7,9 +8,9 @@ import {Consultant} from '../consultant.model';
 })
 export class ConsultantService {
 
-  constructor(private consultantMockService: ConsultantMockService) { }
+  constructor(private http: HttpClient) { }
 
-  getConsultants(): Consultant[] {
-    return this.consultantMockService.getConsultansMock();
+  getConsultants(): Observable<Consultant[]> {
+    return this.http.get<Consultant[]>('api/consultants');
   }
 }

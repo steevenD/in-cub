@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { MatPaginator } from '@angular/material';
+import { MatTableDataSource } from '@angular/material';
+import { Consultant } from './../../consultant.model';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-loop-consultant',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoopConsultantComponent implements OnInit {
 
+  @Input()
+  consultants: Consultant[];
+
+  displayedColumns: string[] = ['firstname', 'lastname', 'description'];
+
+  dataSource = new MatTableDataSource<Consultant>();
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor() { }
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource<Consultant>(this.consultants);
+    this.dataSource.paginator = this.paginator;
   }
 
 }

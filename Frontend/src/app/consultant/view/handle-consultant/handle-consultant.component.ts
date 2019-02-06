@@ -1,3 +1,4 @@
+import { Consultant } from './../../consultant.model';
 import { Component, OnInit } from '@angular/core';
 import {ConsultantService} from '../../services/consultant.service';
 
@@ -8,6 +9,8 @@ import {ConsultantService} from '../../services/consultant.service';
 })
 export class HandleConsultantComponent implements OnInit {
 
+  consultants: Consultant[];
+
   constructor(private consultantService: ConsultantService) { }
 
   ngOnInit() {
@@ -15,7 +18,10 @@ export class HandleConsultantComponent implements OnInit {
   }
 
   getConsultant() {
-    console.log(this.consultantService.getConsultants());
+    this.consultantService.getConsultants().subscribe(consultants => {
+      this.consultants = consultants;
+      console.log(this.consultants);
+    });
   }
 
 }
