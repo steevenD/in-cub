@@ -24,11 +24,8 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { LoginComponent } from './auth/views/login/login.component';
 import { RegisterComponent } from './auth/views/register/register.component';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatPaginatorModule, MatTableModule} from "@angular/material";
+import { MatPaginatorModule, MatTableModule, MatToolbarModule, MatIconModule,
+  MatButtonModule, MatTooltipModule, MatCardModule, MatGridListModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -62,7 +59,10 @@ import {MatPaginatorModule, MatTableModule} from "@angular/material";
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCardModule,
+    MatGridListModule,
+    MatListModule
   ],
   providers: [AddressPipe],
   bootstrap: [AppComponent]
