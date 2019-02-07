@@ -1,3 +1,10 @@
+<button *ngIf="!displayForm" (click)="displayForm = !displayForm" mat-button color="primary">Display the form</button>
+<button *ngIf="displayForm" (click)="displayForm = !displayForm" mat-button color="primary">Hide the form</button>
+
+<div *ngIf="displayForm">
+  <app-create-startup></app-create-startup>
+</div>
+
 <div class="mat-elevation-z8 width-100">
   <table mat-table [dataSource]="dataSource">
 

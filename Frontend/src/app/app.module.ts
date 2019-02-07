@@ -24,8 +24,22 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { LoginComponent } from './auth/views/login/login.component';
 import { RegisterComponent } from './auth/views/register/register.component';
 
-import { MatPaginatorModule, MatTableModule, MatToolbarModule, MatIconModule,
-  MatButtonModule, MatTooltipModule, MatCardModule, MatGridListModule, MatListModule } from '@angular/material';
+import {
+  MatPaginatorModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatTooltipModule,
+  MatCardModule,
+  MatGridListModule,
+  MatListModule,
+  MatFormFieldModule,
+  MatOptionModule, MatSelectModule, MatInputModule
+} from '@angular/material';
+import {ReactiveFormsModule} from "@angular/forms";
+import { CreateStartupComponent } from './startup/components/create-startup/create-startup.component';
+import { UpdateStartupComponent } from './startup/components/update-startup/update-startup.component';
 
 
 @NgModule({
@@ -45,11 +59,18 @@ import { MatPaginatorModule, MatTableModule, MatToolbarModule, MatIconModule,
     NavbarComponent,
     NotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateStartupComponent,
+    UpdateStartupComponent
   ],
   imports: [
     BrowserModule,
     MatTableModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
     AppRoutingModule,
