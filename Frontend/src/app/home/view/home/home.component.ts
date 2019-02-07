@@ -1,4 +1,9 @@
+import { Consultant } from './../../../consultant/consultant.model';
+import { ConsultantService } from './../../../consultant/services/consultant.service';
 import { Component, OnInit } from '@angular/core';
+import { StartupService } from 'src/app/startup/services/startup.service';
+import { Startup } from 'src/app/startup/startup.model';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +12,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  numberCardsSection: Array<Number> = [0, 1, 2];
-  constructor() { }
+  cardsToDisplay: Number = 3;
+  startUps: Startup[];
+  consultants: Consultant[];
+
+  constructor(private startUpService: StartupService, private consultantService: ConsultantService) { }
 
   ngOnInit() {
+    this.getStartUps();
+    this.getConsultant();
+  }
+
+  getStartUps() {
+    this.startUpService.getStartUps().subscribe(startups => {
+      this.startUps = startups;
+    });
+  }
+
+  getConsultant() {
+    this.consultantService.getConsultants().subscribe(consultants => {
+      this.consultants = consultants;
+    });
   }
 
 }
