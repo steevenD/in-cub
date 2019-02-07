@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { StartupService } from 'src/app/startup/services/startup.service';
 import { Startup } from 'src/app/startup/startup.model';
 import { take } from 'rxjs/operators';
+import { UserService } from 'src/app/auth/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,9 @@ export class HomeComponent implements OnInit {
   startUps: Startup[];
   consultants: Consultant[];
 
-  constructor(private startUpService: StartupService, private consultantService: ConsultantService) { }
+  constructor(private startUpService: StartupService,
+    private consultantService: ConsultantService,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.getStartUps();

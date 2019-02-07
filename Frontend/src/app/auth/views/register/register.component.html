@@ -1,3 +1,35 @@
-<p>
-  register works!
-</p>
+<form *ngIf="fGroup" (ngSubmit)="register()" [formGroup]="fGroup">
+  <div class="example-container">
+    <div class="flex jc-sb">
+      <mat-form-field>
+        <input matInput placeholder="Firstname *" [formControl]="fGroup.get('firstname')">
+        <mat-error *ngIf="fGroup.get('firstname').hasError('required')">The field is required</mat-error>
+        <mat-error *ngIf="fGroup.get('firstname').hasError('maxlength')">The max length is 25</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Lastname *" [formControl]="fGroup.get('lastname')">
+        <mat-error *ngIf="fGroup.get('lastname').hasError('required')">The field is required</mat-error>
+        <mat-error *ngIf="fGroup.get('lastname').hasError('maxlength')">The max length is 25</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+          <input matInput placeholder="Email *" [formControl]="fGroup.get('email')">
+          <mat-error *ngIf="fGroup.get('email').hasError('required')">The field is required</mat-error>
+          <mat-error *ngIf="fGroup.get('email').hasError('email')">This field has to be an email</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="flex jc-sb">
+      <mat-form-field>
+        <input matInput placeholder="Password *" [formControl]="fGroup.get('password')">
+        <mat-error *ngIf="fGroup.get('password').hasError('required')">The field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Confirm password *" [formControl]="fGroup.get('confirmPassword')">
+        <mat-error *ngIf="fGroup.get('confirmPassword').hasError('required')">The field is required</mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-button type="submit" [disabled]="fGroup.invalid">Create account</button>
+  </div>
+</form>
