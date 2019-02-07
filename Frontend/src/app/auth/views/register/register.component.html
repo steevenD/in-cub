@@ -22,12 +22,13 @@
 
     <div class="flex jc-sb">
       <mat-form-field>
-        <input matInput placeholder="Password *" [formControl]="fGroup.get('password')">
+        <input matInput type="password" placeholder="Password *" [formControl]="fGroup.get('password')">
         <mat-error *ngIf="fGroup.get('password').hasError('required')">The field is required</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Confirm password *" [formControl]="fGroup.get('confirmPassword')">
+        <input matInput type="password" placeholder="Confirm password *" [formControl]="fGroup.get('confirmPassword')">
         <mat-error *ngIf="fGroup.get('confirmPassword').hasError('required')">The field is required</mat-error>
+        <mat-error *ngIf="fGroup.get('confirmPassword').hasError('mustMatch')">The confirmed password don't match the password</mat-error>
       </mat-form-field>
     </div>
     <button mat-button type="submit" [disabled]="fGroup.invalid">Create account</button>

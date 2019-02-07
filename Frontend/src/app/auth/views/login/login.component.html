@@ -10,7 +10,7 @@
 
       <div class="flex jc-sb">
         <mat-form-field>
-          <input matInput placeholder="Password *" [formControl]="fGroup.get('password')">
+          <input matInput type="password" placeholder="Password *" [formControl]="fGroup.get('password')">
           <mat-error *ngIf="fGroup.get('password').hasError('required')">The field is required</mat-error>
         </mat-form-field>
       </div>

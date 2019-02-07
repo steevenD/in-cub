@@ -1,12 +1,14 @@
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
-import { Validators } from '@angular/forms';
+import { Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { User } from '../user.model';
 import {httpOptions} from '../../shared/env';
+import { ErrorStateMatcher } from '@angular/material';
+import { MatchPassword } from '../validators/match-password.validator';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +29,16 @@ export class UserService {
       'email': ['', [Validators.required, Validators.email]],
       'password': ['', [Validators.required]],
       'confirmPassword': ['', [Validators.required]]
-    });
+    }, {
+      validator: MatchPassword('password', 'confirmPassword')
+  });
+  }
+
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+    const password = group.controls.password.value;
+    const confirmPassword = group.controls.confirmPassword.value;
+
+    return password === confirmPassword ? null : { notSame: true }
   }
 
   /**
