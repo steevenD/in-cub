@@ -1,3 +1,50 @@
-<p>
-  form-startup works!
-</p>
+<form *ngIf="fGroup" [formGroup]="fGroup">
+  <div class="example-container">
+    <div class="flex jc-sb">
+      <mat-form-field>
+        <input matInput placeholder="Name *" [formControl]="fGroup.get('name')">
+        <mat-error *ngIf="fGroup.get('name').hasError('required')">The field is required</mat-error>
+        <mat-error *ngIf="fGroup.get('name').hasError('maxlength')">The max length is 20</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Business Line *" [formControl]="fGroup.get('businessLine')">
+        <mat-error *ngIf="fGroup.get('businessLine').hasError('required')">The field is required</mat-error>
+        <mat-error *ngIf="fGroup.get('businessLine').hasError('maxlength')">The max length is 10</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Legal representative name *" [formControl]="fGroup.get('legalRepresentativeName')">
+        <mat-error *ngIf="fGroup.get('legalRepresentativeName').hasError('required')">The field is required</mat-error>
+        <mat-error *ngIf="fGroup.get('legalRepresentativeName').hasError('maxlength')">The max length is 15</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="width-100 description">
+      <textarea matInput placeholder="Description *" [formControl]="fGroup.get('description')"></textarea>
+      <mat-hint align="end">{{fGroup.get('description').value.length || 0}}/250</mat-hint>
+      <mat-error *ngIf="fGroup.get('description').hasError('required')">The field is required</mat-error>
+      <mat-error *ngIf="fGroup.get('description').hasError('maxlength')">The max length is 250</mat-error>
+    </mat-form-field>
+
+    <div class="flex jc-sb">
+      <mat-form-field>
+        <input matInput placeholder="Co-founder number *" [formControl]="fGroup.get('cofounderNumber')">
+        <mat-error *ngIf="fGroup.get('cofounderNumber').hasError('required')">The field is required</mat-error>
+        <mat-error *ngIf="fGroup.get('cofounderNumber').hasError('pattern')">The field is a number</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Address" [formControl]="fGroup.get('address')">
+        <mat-error *ngIf="fGroup.get('address').hasError('maxlength')">The max length is 25</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Consultant *" [formControl]="fGroup.get('consultant')">
+          <mat-option *ngFor="let consultant of consultants" [value]="consultant.id">{{consultant.firstname + ' ' + consultant.lastname}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="fGroup.get('consultant').hasError('required')">The field is required</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</form>

@@ -1,3 +1,61 @@
-<p>
-  home works!
+<p class="bienvenue">
+  Bienvenue
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel turpis id arcu eleifend bibendum. Maecenas malesuada venenatis sem, sed convallis purus porta sed. Aenean rhoncus id magna vitae commodo. Integer cursus pharetra pharetra. Aliquam malesuada dignissim hendrerit. Cras sollicitudin ac elit quis faucibus. Nulla gravida at risus id pretium. Etiam interdum lectus risus. In metus tellus, vehicula vitae ornare nec, ullamcorper eget risus. Suspendisse ut orci dolor. In hac habitasse platea dictumst.
 </p>
+<section class="action" routerLink="/startups">
+  <mat-card class="section">
+    <mat-card-header>
+      <mat-card-title>Startups</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list cols="3" rowHeight="15rem">
+        <mat-grid-tile *ngFor="let number of numberCardsSection; index as i" >
+          <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>startup.name</mat-card-title>
+              <mat-card-subtitle>startup.businessLine</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <div>
+                Legal representative : startup.legalRepresentativeName
+              </div>
+              <div>
+                Description : startup.description
+              </div>
+              <div>
+                Address : startup.address
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <mat-icon *ngIf="i == numberCardsSection.length - 1" class="example-icon action" matTooltip="See all startups">arrow_forward_ios</mat-icon>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+</section>
+<section class="action" routerLink="/consultants">
+  <mat-card class="section">
+    <mat-card-header>
+      <mat-card-title>Consultants</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list cols="3" rowHeight="15rem">
+          <mat-grid-tile *ngFor="let number of numberCardsSection; index as i" >
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>consultant.lastname consultant.firstname</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+              <div>
+                Description : consultant.description
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <mat-icon *ngIf="i == numberCardsSection.length - 1" class="example-icon action" matTooltip="See all consultants">arrow_forward_ios</mat-icon>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+</section>

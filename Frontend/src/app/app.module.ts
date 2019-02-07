@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { InMemoryDataService } from './shared/services/in-memory-data.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -23,6 +24,24 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { LoginComponent } from './auth/views/login/login.component';
 import { RegisterComponent } from './auth/views/register/register.component';
 
+import {
+  MatPaginatorModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatTooltipModule,
+  MatCardModule,
+  MatGridListModule,
+  MatListModule,
+  MatFormFieldModule,
+  MatOptionModule, MatSelectModule, MatInputModule, MatDialogModule
+} from '@angular/material';
+import {ReactiveFormsModule} from "@angular/forms";
+import { CreateStartupComponent } from './startup/components/create-startup/create-startup.component';
+import { UpdateStartupComponent } from './startup/components/update-startup/update-startup.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,17 +59,39 @@ import { RegisterComponent } from './auth/views/register/register.component';
     NavbarComponent,
     NotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateStartupComponent,
+    UpdateStartupComponent
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
+    MatTableModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatPaginatorModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
-    )
+    ),
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatCardModule,
+    MatGridListModule,
+    MatListModule
   ],
-  providers: [],
+  providers: [
+    AddressPipe,
+    NumberCofounderPipe
+  ],
+  entryComponents: [UpdateStartupComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

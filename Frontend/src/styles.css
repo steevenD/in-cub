@@ -1,2 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.action {
+  cursor: pointer;
+}
+
+table {
+  width: 100% !important;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.fd-c {
+  flex-direction: column !important;
+}
+
+.jc-sa{
+  justify-content: space-around;
+}
+
+.jc-sb{
+  justify-content: space-between;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.margin-10 {
+ margin: 10px;
+}
+
+span button.mat-raised-button {
+  margin: 5px !important;
+  width: 120px !important;
+}
+
+mat-error {
+  color: #ffff00 !important;
+  font-weight: bold !important;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
