@@ -3,6 +3,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Startup} from '../../startup.model';
 import {AddressPipe} from '../../pipes/address.pipe';
 import {StartupService} from '../../services/startup.service';
+import {MatDialog} from "@angular/material";
+import {UpdateStartupComponent} from "../update-startup/update-startup.component";
 
 @Component({
   selector: 'app-row-startup',
@@ -20,7 +22,8 @@ export class RowStartupComponent implements OnInit {
   displayRow;
 
   constructor(private addressPipe: AddressPipe, private numberCofounderPipe: NumberCofounderPipe,
-    private starUpService: StartupService ) { }
+    private starUpService: StartupService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getDisplayRow(this.row);
@@ -49,8 +52,11 @@ export class RowStartupComponent implements OnInit {
    * to update a startup
    * @param idStartup
    */
-  handleClickUpdateStartup(idStartup: number) {
-
+  handleClickUpdateStartup(startUp: Startup) {
+    const dialogRef = this.dialog.open(UpdateStartupComponent, {
+      width: '700px',
+      data: {startUp: startUp}
+    });
   }
 
 }

@@ -15,6 +15,7 @@ export class CreateStartupComponent implements OnInit {
 
   ngOnInit() {
     this.generateForm();
+
   }
 
   generateForm() {

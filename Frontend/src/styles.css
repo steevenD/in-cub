@@ -46,3 +46,7 @@ mat-error {
   color: #ffff00 !important;
   font-weight: bold !important;
 }
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
