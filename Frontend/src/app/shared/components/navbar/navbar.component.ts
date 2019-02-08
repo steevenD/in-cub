@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  userConnected: Boolean = false;
   constructor() { }
 
   ngOnInit() {
+    if (localStorage.getItem('userConnected')) {
+      this.userConnected = true;
+    }
+  }
+
+  logout() {
+    this.userConnected = false;
+    localStorage.clear();
   }
 
 }

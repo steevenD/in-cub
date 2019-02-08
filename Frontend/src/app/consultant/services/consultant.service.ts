@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import {Consultant} from "../consultant.model";
 import {Consultant} from '../consultant.model';
 import {httpOptions} from '../../shared/env';
 
