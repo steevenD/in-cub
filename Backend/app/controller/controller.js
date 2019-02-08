@@ -1,6 +1,7 @@
 const config = require('../config/config.js');
 
 const User = require('../model/user.model.js');
+const Consultant = require('../model/consultant.model.js');
 
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
@@ -79,4 +80,20 @@ exports.userContent = (req, res) => {
 			"user": user
 		});
 	});
+}
+
+exports.getAllConsultants = (req, res) => {
+    Consultant.find({})
+        .exec((err, consultants) => {
+            if (err){
+                return res.status(500).send({
+                    message: "Interne error"
+                });
+            }
+
+            res.status(200).json({
+                "description": "User Content Page",
+                "consultants": consultants
+            });
+        });
 }
