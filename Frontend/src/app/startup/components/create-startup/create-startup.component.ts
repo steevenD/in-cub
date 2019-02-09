@@ -22,7 +22,11 @@ export class CreateStartupComponent implements OnInit {
     this.fGroup = this.startupService.generateForm();
   }
 
-  handleClickCreateStartup(){
+  handleClickCreateStartup() {
     console.log(this.fGroup.value);
+    const newStartup = this.startupService.transformFormToStartUp(this.fGroup);
+    this.startupService.addStartUp(newStartup).subscribe(() => {
+      this.startupService.setStartupChange(true);
+    });
   }
 }

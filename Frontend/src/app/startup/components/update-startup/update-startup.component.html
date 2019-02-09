@@ -1,5 +1,11 @@
-<div class="width-100">
-  <h2>Update StartUp : {{data.startUp.name}}</h2>
+<div class="width-100 tittle-modal flex">
+  <span class="fg-1 as-c ">Update StartUp : {{data.startUp.name}}</span>
+  <button mat-button  class="cross-modal" matDialogClose><mat-icon>close</mat-icon></button>
 </div>
-<app-form-startup [fGroup]="fGroup"></app-form-startup>
-
+<div class="contain-modal">
+  <app-form-startup [fGroup]="fGroup"></app-form-startup>
+  <div class="width-100  btn-modal">
+    <button mat-raised-button color="primary" [disabled]="fGroup.invalid" (click)="handleClickUpdateStartup(fGroup)" >Update StartUp</button>
+    <button mat-button matDialogClose>Cancel</button>
+  </div>
+</div>

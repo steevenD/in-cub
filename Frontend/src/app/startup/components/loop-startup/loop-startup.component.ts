@@ -1,18 +1,26 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {Startup} from '../../startup.model';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 import { AddressPipe } from '../../pipes/address.pipe';
+import {StartupService} from "../../services/startup.service";
+
+export class LoopStartupComponentVModel {
+  startUps: Startup[];
+}
 
 @Component({
   selector: 'app-loop-startup',
   templateUrl: './loop-startup.component.html',
   styleUrls: ['./loop-startup.component.css']
 })
-export class LoopStartupComponent implements OnInit {
+
+
+export class LoopStartupComponent implements OnInit, OnChanges {
 
   @Input()
   startUps: Startup[];
 
+  viewModel = new LoopStartupComponentVModel();
 
   displayForm = false;
    /**
@@ -26,12 +34,18 @@ export class LoopStartupComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngOnInit() {
-    this.dataSource = new MatTableDataSource<Startup>(this.startUps);
-    this.dataSource.paginator = this.paginator;
+  constructor() {
+
   }
 
-  translateRow(row: string){
+  ngOnInit() {
+    this.dataSource = new MatTableDataSource<Startup>(this.viewModel.startUps);
+    this.dataSource.paginator = this.paginator;
+    this.viewModel.startUps = this.startUps;
+  }
+
+
+  translateRow(row: string) {
     switch (row) {
       case 'name': return 'Name';
       case 'legalRepresentativeName': return 'Representative name';
@@ -41,5 +55,11 @@ export class LoopStartupComponent implements OnInit {
       case 'nameConsultant': return 'Consultant';
       case 'actions': return '';
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.viewModel.startUps = changes.startUps.currentValue;
+    this.dataSource = new MatTableDataSource<Startup>(this.viewModel.startUps);
+    this.dataSource.paginator = this.paginator;
   }
 }

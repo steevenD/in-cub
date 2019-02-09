@@ -15,12 +15,21 @@ export class HandleStartupComponent implements OnInit {
 
   ngOnInit() {
     this.getStartUps();
+    this.followModalAction();
+  }
+
+
+  followModalAction() {
+    const s = this.startUpService.startuupsChange$.subscribe(value => {
+      if (value) {
+        this.getStartUps();
+      }
+    });
   }
 
   getStartUps() {
     this.startUpService.getStartUps().subscribe(startups => {
       this.startUps = startups;
-      console.log(this.startUps);
     });
   }
 

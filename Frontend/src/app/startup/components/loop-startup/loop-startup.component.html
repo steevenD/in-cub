@@ -1,7 +1,7 @@
 <button *ngIf="!displayForm" (click)="displayForm = !displayForm" mat-button color="primary">Display the form</button>
 <button *ngIf="displayForm" (click)="displayForm = !displayForm" mat-button color="primary">Hide the form</button>
 
-<div *ngIf="displayForm">
+<div *ngIf="displayForm" class="formCreate">
   <app-create-startup></app-create-startup>
 </div>
 

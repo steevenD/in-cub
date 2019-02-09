@@ -17,6 +17,14 @@ table {
   display: flex !important;
 }
 
+.as-c {
+  align-self: center;
+}
+
+.fg-1 {
+  flex-grow: 1;
+}
+
 .fd-c {
   flex-direction: column !important;
 }
@@ -47,6 +55,38 @@ mat-error {
   font-weight: bold !important;
 }
 
+/**
+  * style modal
+ */
 .mat-dialog-container {
   padding: 0 !important;
+}
+
+
+.tittle-modal {
+  font-size: 18px;
+  background-color: #3f51b5;
+  color: #ffffff;
+  box-sizing: border-box;
+  padding: 12px;
+}
+
+.cross-modal{
+  text-align: right;
+  cursor: pointer;
+  background-color: inherit;
+  border: 0;
+  color: #ffffff;
+
+}
+.cross-modal:focus {outline:0;}
+
+.contain-modal {
+  padding: 30px;
+}
+
+.btn-modal {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 43px;
 }

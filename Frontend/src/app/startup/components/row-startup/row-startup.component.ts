@@ -1,5 +1,5 @@
 import { NumberCofounderPipe } from './../../pipes/number-cofounder.pipe';
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Startup} from '../../startup.model';
 import {AddressPipe} from '../../pipes/address.pipe';
 import {StartupService} from '../../services/startup.service';
@@ -11,7 +11,7 @@ import {UpdateStartupComponent} from "../update-startup/update-startup.component
   templateUrl: './row-startup.component.html',
   styleUrls: ['./row-startup.component.css']
 })
-export class RowStartupComponent implements OnInit {
+export class RowStartupComponent implements OnInit, OnChanges {
 
   @Input()
   startUp: Startup;
@@ -45,7 +45,9 @@ export class RowStartupComponent implements OnInit {
    * @param idStartup
    */
   handleClickDeleteStartup(idStartup: number) {
-    this.starUpService.deleteStartUp(idStartup).subscribe();
+    this.starUpService.deleteStartUp(idStartup).subscribe(() => {
+      this.starUpService.setStartupChange(true);
+    });
   }
 
   /**
@@ -57,6 +59,10 @@ export class RowStartupComponent implements OnInit {
       width: '700px',
       data: {startUp: startUp}
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.startUp = changes.startUp.currentValue;
   }
 
 }

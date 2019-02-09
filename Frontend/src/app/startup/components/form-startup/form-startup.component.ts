@@ -21,10 +21,14 @@ export class FormStartupComponent implements OnInit {
     this.getAllConsultants();
   }
 
+  compareFn(v1: Consultant, v2: Consultant): boolean {
+    return v1 && v2 ? v1.id === v2.id : v1 === v2;
+  }
+
   getAllConsultants() {
     this.consultantService.getConsultants().subscribe( consultants => {
       this.consultants = consultants;
-    })
+    });
   }
 
 
