@@ -16,7 +16,7 @@ export class StartupService {
 
   constructor(private http: HttpClient, private fb: FormBuilder, private consultantService: ConsultantService) { }
 
-  setStartupChange(change: boolean){
+  setStartupChange(change: boolean) {
     this.startupsChange.next(change);
   }
 
