@@ -1,6 +1,6 @@
 import { Consultant } from './../../consultant.model';
 import { ConsultantService } from './../../services/consultant.service';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { MatDialogRef } from '@angular/material';
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -17,7 +17,8 @@ export class UpdateConsultantComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<UpdateConsultantComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private consultantService: ConsultantService
+    private consultantService: ConsultantService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -40,6 +41,9 @@ export class UpdateConsultantComponent implements OnInit {
     this.dialogRef.afterClosed().subscribe(() => {
       const consultantToUpdate: Consultant = this.consultantService.transformFormToConsultant(fGroup, this.data.consultant.id);
       this.consultantService.updateConsultant(consultantToUpdate).subscribe(() => this.consultantService.setConsultantChange(true));
+      this.snackBar.open('The consultant has been updated.', 'Close', {
+        duration: 3000
+      });
       });
    }
 }

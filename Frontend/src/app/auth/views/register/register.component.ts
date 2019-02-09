@@ -1,9 +1,11 @@
+import { HomeComponent } from './../../../home/view/home/home.component';
 import { Router } from '@angular/router';
 import { InMemoryDataService } from './../../../shared/services/in-memory-data.service';
 import { User } from 'src/app/auth/user.model';
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +17,12 @@ export class RegisterComponent implements OnInit {
   fGroup: FormGroup;
   userId: number = null;
   users: User[] = [];
-  constructor(private userService: UserService, private memoryService: InMemoryDataService, private router: Router) { }
+
+  constructor(
+    private userService: UserService,
+    private memoryService: InMemoryDataService,
+    private router: Router,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.generateForm();
@@ -41,6 +48,9 @@ export class RegisterComponent implements OnInit {
     );
     this.userService.add(user)
         .subscribe(() => {
+          this.snackBar.open('Your account has been created, you can now log in.', 'Close', {
+            duration: 5000
+          });
           this.router.navigate(['/']);
         });
   }

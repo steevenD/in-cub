@@ -3,7 +3,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { Startup } from '../../startup.model';
 import { AddressPipe } from '../../pipes/address.pipe';
 import { StartupService } from '../../services/startup.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { UpdateStartupComponent } from '../update-startup/update-startup.component';
 
 @Component({
@@ -25,7 +25,8 @@ export class RowStartupComponent implements OnInit, OnChanges {
     private addressPipe: AddressPipe,
     private numberCofounderPipe: NumberCofounderPipe,
     private starUpService: StartupService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -58,6 +59,9 @@ export class RowStartupComponent implements OnInit, OnChanges {
   handleClickDeleteStartup(idStartup: number) {
     this.starUpService.deleteStartUp(idStartup).subscribe(() => {
       this.starUpService.setStartupChange(true);
+      this.snackBar.open('The startup has been deleted.', 'Close', {
+        duration: 3000
+      });
     });
   }
 

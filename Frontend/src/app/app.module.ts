@@ -35,7 +35,8 @@ import {
   MatGridListModule,
   MatListModule,
   MatFormFieldModule,
-  MatOptionModule, MatSelectModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSlideToggleModule
+  MatOptionModule, MatSelectModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSlideToggleModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CreateStartupComponent } from './startup/components/create-startup/create-startup.component';
@@ -77,6 +78,7 @@ import { UpdateConsultantComponent } from './consultant/components/update-consul
     MatSlideToggleModule,
     MatSelectModule,
     MatPaginatorModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
