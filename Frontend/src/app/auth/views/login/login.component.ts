@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.generateForm();
+
+
   }
 
   generateForm() {
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.searchUser(this.fGroup.value.email, this.fGroup.value.password).subscribe(users => {
       localStorage.setItem('userConnected', users[0].id.toString());
+      this.userService.setConnected(true);
       this.router.navigate(['/']);
     });
   }
