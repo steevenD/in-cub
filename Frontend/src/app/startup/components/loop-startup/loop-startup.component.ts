@@ -12,7 +12,6 @@ export class LoopStartupComponentVModel {
   styleUrls: ['./loop-startup.component.css']
 })
 
-
 export class LoopStartupComponent implements OnInit, OnChanges {
 
   @Input()
@@ -32,16 +31,13 @@ export class LoopStartupComponent implements OnInit, OnChanges {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() {
-
-  }
+  constructor() { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Startup>(this.viewModel.startUps);
     this.dataSource.paginator = this.paginator;
     this.viewModel.startUps = this.startUps;
   }
-
 
   translateRow(row: string) {
     switch (row) {

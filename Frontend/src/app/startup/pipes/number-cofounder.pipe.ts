@@ -16,5 +16,4 @@ export class NumberCofounderPipe implements PipeTransform {
       return '';
     }
   }
-
 }

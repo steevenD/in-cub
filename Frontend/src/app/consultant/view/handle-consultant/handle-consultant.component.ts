@@ -1,6 +1,5 @@
 import { Consultant } from './../../consultant.model';
 import { Component, OnInit } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
 import {ConsultantService} from '../../services/consultant.service';
 
 @Component({
@@ -19,7 +18,6 @@ export class HandleConsultantComponent implements OnInit {
     this.followModalAction();
   }
 
-
   followModalAction() {
     const s = this.consultantService.consuultantsChange$.subscribe(value => {
       if (value) {
@@ -33,5 +31,4 @@ export class HandleConsultantComponent implements OnInit {
       this.consultants = consultants;
     });
   }
-
 }

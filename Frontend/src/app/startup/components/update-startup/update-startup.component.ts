@@ -30,7 +30,6 @@ export class UpdateStartupComponent implements OnInit {
   }
 
   initFormGroup() {
-    console.log(this.fGroup.get('name'));
     this.fGroup.get('name').setValue(this.data.startUp.name);
     this.fGroup.get('businessLine').setValue(this.data.startUp.businessLine);
     this.fGroup.get('legalRepresentativeName').setValue(this.data.startUp.legalRepresentativeName);

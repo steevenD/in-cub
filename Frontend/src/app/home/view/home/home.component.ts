@@ -3,7 +3,6 @@ import { ConsultantService } from './../../../consultant/services/consultant.ser
 import { Component, OnInit } from '@angular/core';
 import { StartupService } from 'src/app/startup/services/startup.service';
 import { Startup } from 'src/app/startup/startup.model';
-import { take } from 'rxjs/operators';
 import { UserService } from 'src/app/auth/services/user.service';
 
 @Component({
@@ -37,5 +36,4 @@ export class HomeComponent implements OnInit {
       this.consultants = consultants;
     });
   }
-
 }

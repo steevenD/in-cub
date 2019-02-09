@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {StartupService} from "../../services/startup.service";
+import {FormGroup} from '@angular/forms';
+import {StartupService} from '../../services/startup.service';
 
 @Component({
   selector: 'app-create-startup',

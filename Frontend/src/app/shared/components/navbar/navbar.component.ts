@@ -20,5 +20,4 @@ export class NavbarComponent implements OnInit {
     this.userConnected = false;
     localStorage.clear();
   }
-
 }

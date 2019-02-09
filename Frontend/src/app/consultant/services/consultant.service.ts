@@ -45,7 +45,6 @@ export class ConsultantService {
     return this.http.get<Consultant>(`api/consultants/${id}`);
   }
 
-
   getConsultants(): Observable<Consultant[]> {
     return this.http.get<Consultant[]>('api/consultants');
   }

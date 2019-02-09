@@ -1,13 +1,8 @@
 import {ErrorHandler, Injectable} from '@angular/core';
-
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-
 import {catchError} from 'rxjs/operators';
-
 import {throwError} from 'rxjs/internal/observable/throwError';
-
 import {Router} from '@angular/router';
-
 import {Observable} from 'rxjs/internal/Observable';
 
 

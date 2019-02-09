@@ -1,6 +1,5 @@
 import { Consultant } from './../../consultant/consultant.model';
 import { Injectable } from '@angular/core';
-
 import { Startup } from 'src/app/startup/startup.model';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import {ConsultantMockService} from './mock/consultant-mock.service';

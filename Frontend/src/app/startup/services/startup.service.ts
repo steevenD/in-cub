@@ -67,5 +67,4 @@ export class StartupService {
   addStartUp(startUp: Startup) {
     return this.http.post<Startup>(`/api/startups`, startUp, httpOptions);
   }
-
 }
