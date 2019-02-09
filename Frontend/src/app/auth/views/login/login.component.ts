@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.generateForm();
+
+
   }
 
   generateForm() {
@@ -26,6 +28,7 @@ export class LoginComponent implements OnInit {
       console.log(users);
       localStorage.setItem('userConnected', users[0].id.toString());
       console.log(localStorage);
+      this.userService.setConnected(true);
     });
   }
 

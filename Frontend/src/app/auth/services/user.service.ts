@@ -17,8 +17,22 @@ export class UserService {
 
   public users = new BehaviorSubject<User[]>([]);
 
+  /**
+   * to follow if user is connected to change menu
+   */
+  private connected = new BehaviorSubject(false);
+  public connected$ = this.connected.asObservable();
+
   constructor(private http: HttpClient, private fb: FormBuilder) { }
 
+
+  /**
+   * to set if user is connected
+   * @param userIsConnected
+   */
+  setConnected(userIsConnected: boolean) {
+    this.connected.next(userIsConnected);
+  }
   /**
    * to generate form
    */
