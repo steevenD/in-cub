@@ -65,7 +65,7 @@ export class StartupService {
     return this.http.post('api/startups', startup, httpOptions);
   }
 
-  addStartUp(startUp : Startup){
+  addStartUp(startUp: Startup) {
     return this.http.post<Startup>(`/api/startups`, startUp, httpOptions);
   }
 

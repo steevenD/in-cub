@@ -1,11 +1,12 @@
 <button *ngIf="!displayForm" (click)="displayForm = !displayForm" mat-button color="primary">Display the form</button>
 <button *ngIf="displayForm" (click)="displayForm = !displayForm" mat-button color="primary">Hide the form</button>
+<mat-slide-toggle [checked]="displayForm" color="primary" (change)="displayForm = !displayForm" ></mat-slide-toggle>
 
 <div *ngIf="displayForm" class="formCreate">
   <app-create-startup></app-create-startup>
 </div>
 
-<div class="mat-elevation-z8 width-100">
+<div class="mat-elevation-z8 startups">
   <table mat-table [dataSource]="dataSource">
 
     <ng-container *ngFor="let row of displayedColumns" matColumnDef={{row}}>

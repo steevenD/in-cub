@@ -1,3 +1,4 @@
-div {
+.container{
+  margin: 8px;
   display: block;
 }
