@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Startup} from "../startup.model";
-import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, Observable} from "rxjs";
-import {httpOptions} from "../../shared/env";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ConsultantService} from "../../consultant/services/consultant.service";
+import {Startup} from '../startup.model';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {httpOptions} from '../../shared/env';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,7 @@ export class StartupService {
   private startupsChange = new BehaviorSubject(false);
   public startuupsChange$ = this.startupsChange.asObservable();
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private consultantService: ConsultantService) { }
+  constructor(private http: HttpClient, private fb: FormBuilder) { }
 
   setStartupChange(change: boolean) {
     this.startupsChange.next(change);
@@ -65,7 +64,7 @@ export class StartupService {
     return this.http.post('api/startups', startup, httpOptions);
   }
 
-  addStartUp(startUp : Startup){
+  addStartUp(startUp: Startup) {
     return this.http.post<Startup>(`/api/startups`, startUp, httpOptions);
   }
 

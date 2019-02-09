@@ -37,9 +37,10 @@ import {
   MatFormFieldModule,
   MatOptionModule, MatSelectModule, MatInputModule, MatDialogModule
 } from '@angular/material';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 import { CreateStartupComponent } from './startup/components/create-startup/create-startup.component';
 import { UpdateStartupComponent } from './startup/components/update-startup/update-startup.component';
+import { UpdateConsultantComponent } from './consultant/components/update-consultant/update-consultant.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { UpdateStartupComponent } from './startup/components/update-startup/upda
     LoginComponent,
     RegisterComponent,
     CreateStartupComponent,
-    UpdateStartupComponent
+    UpdateStartupComponent,
+    UpdateConsultantComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +93,10 @@ import { UpdateStartupComponent } from './startup/components/update-startup/upda
     AddressPipe,
     NumberCofounderPipe
   ],
-  entryComponents: [UpdateStartupComponent],
+  entryComponents: [
+    UpdateStartupComponent,
+    UpdateConsultantComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

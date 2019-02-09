@@ -15,10 +15,20 @@ export class HandleConsultantComponent implements OnInit {
   constructor(private consultantService: ConsultantService) { }
 
   ngOnInit() {
-    this.getConsultant();
+    this.getConsultants();
+    this.followModalAction();
   }
 
-  getConsultant() {
+
+  followModalAction() {
+    const s = this.consultantService.consuultantsChange$.subscribe(value => {
+      if (value) {
+        this.getConsultants();
+      }
+    });
+  }
+
+  getConsultants() {
     this.consultantService.getConsultants().subscribe(consultants => {
       this.consultants = consultants;
     });
