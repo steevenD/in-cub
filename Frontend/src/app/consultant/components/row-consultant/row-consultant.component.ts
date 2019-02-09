@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { UpdateConsultantComponent } from './../update-consultant/update-consultant.component';
+import { MatDialog } from '@angular/material';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Consultant } from '../../consultant.model';
 import { ConsultantService} from '../../services/consultant.service';
 
@@ -8,7 +10,7 @@ import { ConsultantService} from '../../services/consultant.service';
   templateUrl: './row-consultant.component.html',
   styleUrls: ['./row-consultant.component.css']
 })
-export class RowConsultantComponent implements OnInit {
+export class RowConsultantComponent implements OnInit, OnChanges {
 
   @Input()
   consultant: Consultant;
@@ -18,7 +20,10 @@ export class RowConsultantComponent implements OnInit {
 
   displayRow;
 
-  constructor(private consultantService: ConsultantService) { }
+  constructor(
+    private consultantService: ConsultantService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.getDisplayRow(this.row);
@@ -26,26 +31,33 @@ export class RowConsultantComponent implements OnInit {
 
   getDisplayRow(row: string) {
     switch (row) {
-      case 'firstname': this.displayRow = this.consultant.firstname;break;
-      case 'lastname': this.displayRow = this.consultant.lastname;break;
-      case 'description': this.displayRow = this.consultant.description;break;
+      case 'firstname':
+        this.displayRow = this.consultant.firstname;
+        break;
+      case 'lastname':
+        this.displayRow = this.consultant.lastname;
+        break;
+      case 'description':
+        this.displayRow = this.consultant.description;
+        break;
     }
   }
 
-  /**
-   * to delete a consultant
-   * @param idConsultant
-   */
   handleClickDeleteConsultant(idConsultant: number) {
     console.log(idConsultant);
-    this.consultantService.deleteConsultant(idConsultant).subscribe();
+    this.consultantService.deleteConsultant(idConsultant).subscribe(() => {
+      this.consultantService.setConsultantChange(true);
+    });
   }
 
-  /**
-   * to update a consultant
-   * @param idConsultant
-   */
-  handleClickUpdateConsultant(idConsultant: number) {
+  handleClickUpdateConsultant(consultant: number) {
+    const dialogRef = this.dialog.open(UpdateConsultantComponent, {
+      width: '700px',
+      data: {consultant: consultant}
+    });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.consultant = changes.consultant.currentValue;
+  }
 }

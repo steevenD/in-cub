@@ -1,8 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {Startup} from '../../startup.model';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
-import { AddressPipe } from '../../pipes/address.pipe';
-import {StartupService} from "../../services/startup.service";
 
 export class LoopStartupComponentVModel {
   startUps: Startup[];

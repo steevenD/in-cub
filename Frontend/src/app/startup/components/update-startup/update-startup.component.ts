@@ -1,10 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {Startup} from "../../startup.model";
-import {StartupService} from "../../services/startup.service";
-import {Consultant} from "../../../consultant/consultant.model";
-import {ConsultantService} from "../../../consultant/services/consultant.service";
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Startup } from '../../startup.model';
+import { StartupService } from '../../services/startup.service';
 
 @Component({
   selector: 'app-update-startup',
@@ -13,14 +11,13 @@ import {ConsultantService} from "../../../consultant/services/consultant.service
 })
 export class UpdateStartupComponent implements OnInit {
 
-
   fGroup: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<UpdateStartupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private startupService: StartupService,
-    private consultantService: ConsultantService) {}
+    private startupService: StartupService
+  ) { }
 
 
   ngOnInit() {
@@ -33,7 +30,7 @@ export class UpdateStartupComponent implements OnInit {
   }
 
   initFormGroup() {
-    console.log(this.data);
+    console.log(this.fGroup.get('name'));
     this.fGroup.get('name').setValue(this.data.startUp.name);
     this.fGroup.get('businessLine').setValue(this.data.startUp.businessLine);
     this.fGroup.get('legalRepresentativeName').setValue(this.data.startUp.legalRepresentativeName);
@@ -42,8 +39,6 @@ export class UpdateStartupComponent implements OnInit {
     this.fGroup.get('address').setValue(this.data.startUp.address);
     this.fGroup.get('consultant').setValue(this.data.startUp.consultant);
   }
-
-
 
   handleClickUpdateStartup(fGroup: FormGroup) {
     this.dialogRef.close();

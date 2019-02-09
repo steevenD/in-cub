@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-form-consultant',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-consultant.component.css']
 })
 export class FormConsultantComponent implements OnInit {
+
+  @Input()
+  fGroup: FormGroup;
 
   constructor() { }
 

@@ -1,3 +1,24 @@
-<p>
-  form-consultant works!
-</p>
+<form *ngIf="fGroup" [formGroup]="fGroup">
+  <div class="example-container">
+    <div class="flex jc-sb">
+      <mat-form-field>
+        <input matInput placeholder="Firstname *" [formControl]="fGroup.get('firstname')">
+        <mat-error *ngIf="fGroup.get('firstname').hasError('required')">The field is required</mat-error>
+        <mat-error *ngIf="fGroup.get('firstname').hasError('maxlength')">The max length is 25</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Lastname *" [formControl]="fGroup.get('lastname')">
+        <mat-error *ngIf="fGroup.get('lastname').hasError('required')">The field is required</mat-error>
+        <mat-error *ngIf="fGroup.get('lastname').hasError('maxlength')">The max length is 25</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="width-100 description">
+      <textarea matInput placeholder="Description *" [formControl]="fGroup.get('description')"></textarea>
+      <mat-hint align="end">{{fGroup.get('description').value.length || 0}}/250</mat-hint>
+      <mat-error *ngIf="fGroup.get('description').hasError('required')">The field is required</mat-error>
+      <mat-error *ngIf="fGroup.get('description').hasError('maxlength')">The max length is 250</mat-error>
+    </mat-form-field>
+  </div>
+</form>
