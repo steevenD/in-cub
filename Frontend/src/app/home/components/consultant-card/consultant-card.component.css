@@ -1,0 +1,4 @@
+.example-header-image {
+  /*background-image: url('https://picsum.photos/200/300/?image=696');*/
+  background-size: cover;
+}

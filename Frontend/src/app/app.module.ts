@@ -44,6 +44,8 @@ import { CreateStartupComponent } from './startup/components/create-startup/crea
 import { UpdateStartupComponent } from './startup/components/update-startup/update-startup.component';
 import { UpdateConsultantComponent } from './consultant/components/update-consultant/update-consultant.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { StartupCardComponent } from './home/components/startup-card/startup-card.component';
+import { ConsultantCardComponent } from './home/components/consultant-card/consultant-card.component';
 
 
 @NgModule({
@@ -67,7 +69,9 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
     CreateStartupComponent,
     UpdateStartupComponent,
     UpdateConsultantComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    StartupCardComponent,
+    ConsultantCardComponent
   ],
   imports: [
     BrowserModule,

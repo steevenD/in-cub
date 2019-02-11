@@ -6,11 +6,6 @@
   width: 98%;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
 .bienvenue {
   text-align: center;
   font-size: 1.2rem;
