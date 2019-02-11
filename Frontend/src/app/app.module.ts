@@ -35,12 +35,19 @@ import {
   MatGridListModule,
   MatListModule,
   MatFormFieldModule,
-  MatOptionModule, MatSelectModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSlideToggleModule
+  MatOptionModule,
+  MatSelectModule,
+  MatInputModule,
+  MatDialogModule,
+  MatButtonToggleModule,
+  MatSlideToggleModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CreateStartupComponent } from './startup/components/create-startup/create-startup.component';
 import { UpdateStartupComponent } from './startup/components/update-startup/update-startup.component';
 import { UpdateConsultantComponent } from './consultant/components/update-consultant/update-consultant.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 
 @NgModule({
@@ -63,12 +70,14 @@ import { UpdateConsultantComponent } from './consultant/components/update-consul
     RegisterComponent,
     CreateStartupComponent,
     UpdateStartupComponent,
-    UpdateConsultantComponent
+    UpdateConsultantComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
     MatDialogModule,
     MatTableModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

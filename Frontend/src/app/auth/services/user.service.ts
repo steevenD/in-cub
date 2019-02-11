@@ -66,7 +66,6 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    // return this.http.get<User[]>(urlAPI + 'users');
     return this.http.get<User[]>('api/users');
   }
 

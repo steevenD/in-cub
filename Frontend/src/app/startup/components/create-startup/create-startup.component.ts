@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {StartupService} from "../../services/startup.service";
+import {SpinnerService} from "../../../shared/services/spinner.service";
 
 @Component({
   selector: 'app-create-startup',
@@ -11,7 +12,7 @@ export class CreateStartupComponent implements OnInit {
 
   fGroup: FormGroup;
 
-  constructor(private startupService: StartupService) { }
+  constructor(private startupService: StartupService, private spinnerService: SpinnerService) { }
 
   ngOnInit() {
     this.generateForm();
@@ -22,11 +23,17 @@ export class CreateStartupComponent implements OnInit {
     this.fGroup = this.startupService.generateForm();
   }
 
+  /**
+   * call WS to create a new startUp
+   */
   handleClickCreateStartup() {
-    console.log(this.fGroup.value);
     const newStartup = this.startupService.transformFormToStartUp(this.fGroup);
     this.startupService.addStartUp(newStartup).subscribe(() => {
+      this.spinnerService.show();
       this.startupService.setStartupChange(true);
-    });
+    },
+      (err) => console.error(err),
+      () => this.spinnerService.hide()
+    );
   }
 }
