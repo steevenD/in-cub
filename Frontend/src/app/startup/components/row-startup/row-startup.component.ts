@@ -5,6 +5,7 @@ import { AddressPipe } from '../../pipes/address.pipe';
 import { StartupService } from '../../services/startup.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { UpdateStartupComponent } from '../update-startup/update-startup.component';
+import {SpinnerService} from "../../../shared/services/spinner.service";
 
 @Component({
   selector: 'app-row-startup',
@@ -26,7 +27,8 @@ export class RowStartupComponent implements OnInit, OnChanges {
     private numberCofounderPipe: NumberCofounderPipe,
     private starUpService: StartupService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private spinnerService: SpinnerService
   ) { }
 
   ngOnInit() {
@@ -58,11 +60,16 @@ export class RowStartupComponent implements OnInit, OnChanges {
 
   handleClickDeleteStartup(idStartup: number) {
     this.starUpService.deleteStartUp(idStartup).subscribe(() => {
+      this.spinnerService.show();
       this.starUpService.setStartupChange(true);
-      this.snackBar.open('The startup has been deleted.', 'Close', {
-        duration: 3000
+    },
+      (err) => console.error(err),
+      () => {
+      this.spinnerService.hide();
+        this.snackBar.open('The startup has been deleted.', 'Close', {
+          duration: 3000
+        });
       });
-    });
   }
 
   handleClickUpdateStartup(startUp: Startup) {

@@ -3,6 +3,7 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Consultant } from '../../consultant.model';
 import { ConsultantService} from '../../services/consultant.service';
+import {SpinnerService} from "../../../shared/services/spinner.service";
 
 
 @Component({
@@ -23,7 +24,8 @@ export class RowConsultantComponent implements OnInit, OnChanges {
   constructor(
     private consultantService: ConsultantService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private spinnerService: SpinnerService
   ) { }
 
   ngOnInit() {
@@ -47,11 +49,16 @@ export class RowConsultantComponent implements OnInit, OnChanges {
   handleClickDeleteConsultant(idConsultant: number) {
     console.log(idConsultant);
     this.consultantService.deleteConsultant(idConsultant).subscribe(() => {
-      this.consultantService.setConsultantChange(true);
-      this.snackBar.open('The consultant has been deleted.', 'Close', {
-        duration: 3000
+        this.spinnerService.show();
+        this.consultantService.setConsultantChange(true);
+    },
+      (err) => console.error(err),
+      () => {
+      this.spinnerService.hide();
+        this.snackBar.open('The consultant has been deleted.', 'Close', {
+          duration: 3000
+        });
       });
-    });
   }
 
   handleClickUpdateConsultant(consultant: number) {

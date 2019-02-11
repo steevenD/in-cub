@@ -1,6 +1,7 @@
 import { Consultant } from './../../consultant.model';
 import { Component, OnInit } from '@angular/core';
 import {ConsultantService} from '../../services/consultant.service';
+import {SpinnerService} from "../../../shared/services/spinner.service";
 
 @Component({
   selector: 'app-handle-consultant',
@@ -11,7 +12,8 @@ export class HandleConsultantComponent implements OnInit {
 
   consultants: Consultant[];
 
-  constructor(private consultantService: ConsultantService) { }
+  constructor(private consultantService: ConsultantService,
+              private spinnerService: SpinnerService) { }
 
   ngOnInit() {
     this.getConsultants();
@@ -28,7 +30,12 @@ export class HandleConsultantComponent implements OnInit {
 
   getConsultants() {
     this.consultantService.getConsultants().subscribe(consultants => {
+      this.spinnerService.show();
       this.consultants = consultants;
-    });
+    },
+      (err) => console.error(err),
+      () => {
+        this.spinnerService.hide();
+      });
   }
 }

@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { Startup } from '../../startup.model';
 import { StartupService } from '../../services/startup.service';
+import {SpinnerService} from "../../../shared/services/spinner.service";
 
 @Component({
   selector: 'app-update-startup',
@@ -17,7 +18,8 @@ export class UpdateStartupComponent implements OnInit {
     public dialogRef: MatDialogRef<UpdateStartupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private startupService: StartupService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private spinnerService: SpinnerService
   ) { }
 
 
@@ -44,10 +46,18 @@ export class UpdateStartupComponent implements OnInit {
     this.dialogRef.close();
     this.dialogRef.afterClosed().subscribe(() => {
       const startUpToUpdate: Startup = this.startupService.transformFormToStartUp(fGroup, this.data.startUp.id);
-      this.startupService.updateStartUp(startUpToUpdate).subscribe(() => this.startupService.setStartupChange(true));
-      this.snackBar.open('The startup has been updated.', 'Close', {
-        duration: 3000
-      });
+      this.startupService.updateStartUp(startUpToUpdate).subscribe(() => {
+        this.spinnerService.show();
+        this.startupService.setStartupChange(true);
+      },
+        (err) => console.error(err),
+        () => {
+          this.snackBar.open('The startup has been updated.', 'Close', {
+            duration: 3000
+          });
+          this.spinnerService.hide();
+        });
+
     });
    }
 }

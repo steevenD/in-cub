@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StartupService} from '../../services/startup.service';
 import {Startup} from '../../startup.model';
+import {SpinnerService} from "../../../shared/services/spinner.service";
 
 @Component({
   selector: 'app-handle-startup',
@@ -11,7 +12,7 @@ export class HandleStartupComponent implements OnInit {
 
   startUps: Startup[];
 
-  constructor(private startUpService: StartupService) { }
+  constructor(private startUpService: StartupService, private spinnerService: SpinnerService) { }
 
   ngOnInit() {
     this.getStartUps();
@@ -28,7 +29,12 @@ export class HandleStartupComponent implements OnInit {
 
   getStartUps() {
     this.startUpService.getStartUps().subscribe(startups => {
-      this.startUps = startups;
-    });
+        this.spinnerService.show();
+        this.startUps = startups;
+    },
+      (err) => console.error(err),
+      () => {
+        this.spinnerService.hide();
+      });
   }
 }
