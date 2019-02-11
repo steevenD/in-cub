@@ -35,13 +35,9 @@ import {
   MatGridListModule,
   MatListModule,
   MatFormFieldModule,
-  MatOptionModule,
-  MatSelectModule,
-  MatInputModule,
-  MatDialogModule,
-  MatButtonToggleModule,
-  MatSlideToggleModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatOptionModule, MatSelectModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSlideToggleModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CreateStartupComponent } from './startup/components/create-startup/create-startup.component';
@@ -86,6 +82,7 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
     MatSlideToggleModule,
     MatSelectModule,
     MatPaginatorModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 import { Startup } from '../../startup.model';
 import { StartupService } from '../../services/startup.service';
 
@@ -16,7 +16,8 @@ export class UpdateStartupComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<UpdateStartupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private startupService: StartupService
+    private startupService: StartupService,
+    private snackBar: MatSnackBar
   ) { }
 
 
@@ -30,7 +31,6 @@ export class UpdateStartupComponent implements OnInit {
   }
 
   initFormGroup() {
-    console.log(this.fGroup.get('name'));
     this.fGroup.get('name').setValue(this.data.startUp.name);
     this.fGroup.get('businessLine').setValue(this.data.startUp.businessLine);
     this.fGroup.get('legalRepresentativeName').setValue(this.data.startUp.legalRepresentativeName);
@@ -45,6 +45,9 @@ export class UpdateStartupComponent implements OnInit {
     this.dialogRef.afterClosed().subscribe(() => {
       const startUpToUpdate: Startup = this.startupService.transformFormToStartUp(fGroup, this.data.startUp.id);
       this.startupService.updateStartUp(startUpToUpdate).subscribe(() => this.startupService.setStartupChange(true));
+      this.snackBar.open('The startup has been updated.', 'Close', {
+        duration: 3000
       });
+    });
    }
 }

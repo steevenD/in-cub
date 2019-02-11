@@ -18,7 +18,6 @@ export class HandleStartupComponent implements OnInit {
     this.followModalAction();
   }
 
-
   followModalAction() {
     const s = this.startUpService.startuupsChange$.subscribe(value => {
       if (value) {
@@ -32,5 +31,4 @@ export class HandleStartupComponent implements OnInit {
       this.startUps = startups;
     });
   }
-
 }

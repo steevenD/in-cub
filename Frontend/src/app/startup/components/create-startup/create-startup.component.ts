@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {StartupService} from "../../services/startup.service";
@@ -12,7 +13,10 @@ export class CreateStartupComponent implements OnInit {
 
   fGroup: FormGroup;
 
-  constructor(private startupService: StartupService, private spinnerService: SpinnerService) { }
+  constructor(
+    private startupService: StartupService,
+    private snackBar: MatSnackBar, private spinnerService: SpinnerService
+  ) { }
 
   ngOnInit() {
     this.generateForm();
@@ -33,7 +37,12 @@ export class CreateStartupComponent implements OnInit {
       this.startupService.setStartupChange(true);
     },
       (err) => console.error(err),
-      () => this.spinnerService.hide()
+      () => {
+        this.snackBar.open('The startup has been created.', 'Close', {
+          duration: 3000
+        });
+        this.spinnerService.hide();
+      }
     );
   }
 }

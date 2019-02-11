@@ -46,5 +46,4 @@ export class LoopConsultantComponent implements OnInit, OnChanges {
     this.dataSource = new MatTableDataSource<Consultant>(this.viewModel.consultants);
     this.dataSource.paginator = this.paginator;
   }
-
 }

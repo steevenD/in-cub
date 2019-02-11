@@ -11,11 +11,12 @@ export class User {
     firstname: string,
     lastname: string,
     email: string,
-    password: string) {
-      this.id = id;
-      this.firstname = firstname;
-      this.lastname = lastname;
-      this.email = email;
-      this.password = password;
+    password: string
+  ) {
+    this.id = id;
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.email = email;
+    this.password = password;
   }
 }

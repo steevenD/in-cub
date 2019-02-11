@@ -30,7 +30,4 @@ export class FormStartupComponent implements OnInit {
       this.consultants = consultants;
     });
   }
-
-
-
 }
