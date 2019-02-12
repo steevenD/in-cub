@@ -12,4 +12,6 @@ module.exports = function(app) {
 	app.get('/api/consultants', controller.getAllConsultants);
 
 	app.delete('/api/consultant/:idConsultant', controller.deleteConsultant);
+
+	app.post('/api/consultant/:idConsultant', controller.updateConsultant);
 };

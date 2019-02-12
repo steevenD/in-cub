@@ -80,7 +80,7 @@ exports.userContent = (req, res) => {
 			"user": user
 		});
 	});
-}
+};
 
 exports.getAllConsultants = (req, res) => {
     Consultant.find({})
@@ -90,7 +90,6 @@ exports.getAllConsultants = (req, res) => {
                     message: "Interne error"
                 });
             }
-			console.log(consultants);
             res.status(200).json({
                 "description": "User Content Page",
                 "consultants": consultants
@@ -106,5 +105,13 @@ exports.deleteConsultant = (req, res) => {
             id: consultant.id
         };
         return res.status(200).send(response);
+    });
+};
+
+
+exports.updateConsultant = (req, res) => {
+    Consultant.findByIdAndUpdate(req.params.idConsultant, req.body, (err, consultant)=> {
+        if (err) return res.status(500).send(err);
+        return res.send(consultant);
     });
 };
