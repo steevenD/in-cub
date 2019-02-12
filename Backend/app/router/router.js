@@ -10,4 +10,6 @@ module.exports = function(app) {
 	app.post('/api/auth/signin', controller.signin);
 
 	app.get('/api/consultants', controller.getAllConsultants);
+
+	app.delete('/api/consultant/:idConsultant', controller.deleteConsultant);
 };

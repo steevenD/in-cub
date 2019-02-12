@@ -90,10 +90,21 @@ exports.getAllConsultants = (req, res) => {
                     message: "Interne error"
                 });
             }
-
+			console.log(consultants);
             res.status(200).json({
                 "description": "User Content Page",
                 "consultants": consultants
             });
         });
-}
+};
+
+exports.deleteConsultant = (req, res) => {
+	Consultant.findByIdAndRemove(req.params.idConsultant, (err, consultant) => {
+        if (err) return res.status(500).send(err);
+        const response = {
+            message: "Consultant was delete",
+            id: consultant.id
+        };
+        return res.status(200).send(response);
+    });
+};
