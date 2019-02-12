@@ -29,7 +29,7 @@ exports.signup = (req, res) => {
     }).catch(err => {
         res.status(500).send("Fail! Error -> " + err);
     });
-}
+};
 
 exports.signin = (req, res) => {
 	console.log("Sign-In");
@@ -58,7 +58,7 @@ exports.signin = (req, res) => {
 		
 		res.status(200).send({ auth: true, accessToken: token });
 	});
-}
+};
 
 exports.userContent = (req, res) => {
 	User.findOne({ _id: req.userId })
