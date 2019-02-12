@@ -9,7 +9,7 @@ const StartupSchema = mongoose.Schema({
         cofounderNumber: Number,
         description: String,
         address: String,
-        consultant: Consultant
+        consultant: {type: mongoose.Schema.Types.ObjectId, ref: 'Consultant'}
 });
 
 module.exports = mongoose.model('Startup', StartupSchema);

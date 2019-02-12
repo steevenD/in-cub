@@ -2,10 +2,14 @@ const config = require('../config/config.js');
 
 const User = require('../model/user.model.js');
 const Consultant = require('../model/consultant.model.js');
+const Startup = require('../model/startup.model.js');
 
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 
+/**
+ * Auth
+ */
 exports.signup = (req, res) => {
 	// Save User to Database
 	console.log("Processing func -> SignUp");
@@ -82,6 +86,10 @@ exports.userContent = (req, res) => {
 	});
 };
 
+/**
+ * Consultant
+ */
+
 exports.getAllConsultants = (req, res) => {
     Consultant.find({})
         .exec((err, consultants) => {
@@ -113,5 +121,54 @@ exports.updateConsultant = (req, res) => {
     Consultant.findByIdAndUpdate(req.params.idConsultant, req.body, (err, consultant)=> {
         if (err) return res.status(500).send(err);
         return res.send(consultant);
+    });
+};
+
+
+/**
+ * Startup
+ */
+exports.getAllStartups = (req, res) => {
+    Startup.find({})
+        .exec((err, startups) => {
+            if (err){
+                return res.status(500).send({
+                    message: "Interne error"
+                });
+            }
+            res.status(200).json({
+                "description": "List of startups",
+                "startups": startups
+            });
+        });
+};
+
+exports.deleteStartup = (req, res) => {
+    Startup.findByIdAndRemove(req.params.idStartup, (err, startup) => {
+        if (err) return res.status(500).send(err);
+        const response = {
+            message: "Startup was delete",
+            id: startup.id
+        };
+        return res.status(200).send(response);
+    });
+};
+
+
+exports.updateStartup = (req, res) => {
+    Startup.findByIdAndUpdate(req.params.idStartup, req.body, (err, startup)=> {
+        if (err) return res.status(500).send(err);
+        return res.send({
+			'message': 'startup change',
+			'new': req.body
+		});
+    });
+};
+
+exports.createStartup = (req, res) => {
+    const newStartup = new Startup(req.body);
+    newStartup.save(err => {
+        if (err) return res.status(500).send(err);
+        return res.status(200).send(newStartup);
     });
 };
