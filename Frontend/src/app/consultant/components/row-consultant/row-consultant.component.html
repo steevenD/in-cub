@@ -1,5 +1,5 @@
 <span *ngIf="row != 'actions'">{{displayRow}}</span>
 <span *ngIf="row === 'actions'">
     <span><button (click)="handleClickUpdateConsultant(consultant)" mat-raised-button color="accent">Update</button></span>
-    <span><button (click)="handleClickDeleteConsultant(consultant.id)"  mat-raised-button color="warn">Delete</button></span>
+    <span><button (click)="handleClickDeleteConsultant(consultant._id)"  mat-raised-button color="warn">Delete</button></span>
 </span>

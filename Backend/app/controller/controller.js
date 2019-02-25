@@ -117,6 +117,8 @@ exports.deleteConsultant = (req, res) => {
 
 
 exports.updateConsultant = (req, res) => {
+    console.log('rrr');
+    console.log('rrr', req.body);
     Consultant.findByIdAndUpdate(req.params.idConsultant, req.body, (err, consultant)=> {
         if (err) return res.status(500).send(err);
         return res.send(consultant);

@@ -50,10 +50,10 @@ export class ConsultantService {
   }
 
   deleteConsultant(id: number): Observable<Consultant> {
-    return this.http.delete<Consultant>(`/api/consultants/${id}`);
+    return this.http.delete<Consultant>(`${urlAPI}/consultant/${id}`);
   }
 
   updateConsultant(consultant: Consultant) {
-    return this.http.post(`/api/consultants`, consultant, httpOptions);
+    return this.http.put(`${urlAPI}/consultant/${consultant.id}`, consultant, httpOptions);
   }
 }

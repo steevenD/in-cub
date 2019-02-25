@@ -41,7 +41,7 @@ export class UpdateConsultantComponent implements OnInit {
   handleClickUpdateConsultant(fGroup: FormGroup) {
     this.dialogRef.close();
     this.dialogRef.afterClosed().subscribe(() => {
-      const consultantToUpdate: Consultant = this.consultantService.transformFormToConsultant(fGroup, this.data.consultant.id);
+      const consultantToUpdate: Consultant = this.consultantService.transformFormToConsultant(fGroup, this.data.consultant._id);
       this.consultantService.updateConsultant(consultantToUpdate).subscribe(() => {
         this.spinnerService.show();
         this.consultantService.setConsultantChange(true);
