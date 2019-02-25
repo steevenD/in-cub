@@ -98,10 +98,9 @@ exports.getAllConsultants = (req, res) => {
                     message: "Interne error"
                 });
             }
-            res.status(200).json({
-                "description": "User Content Page",
-                "consultants": consultants
-            });
+            res.status(200).send(
+                consultants
+            );
         });
 };
 

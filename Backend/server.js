@@ -1,11 +1,13 @@
 
 var Consultant = require('./app/model/consultant.model.js');
+var cors = require('cors');
 
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-app.use(bodyParser.json())
- 
+app.use(bodyParser.json());
+app.use(cors());
+
 require('./app/router/router.js')(app);
 
   

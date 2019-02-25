@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {Consultant} from '../consultant.model';
-import {httpOptions} from '../../shared/env';
+import {httpOptions, urlAPI} from '../../shared/env';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +46,7 @@ export class ConsultantService {
   }
 
   getConsultants(): Observable<Consultant[]> {
-    return this.http.get<Consultant[]>('api/consultants');
+    return this.http.get<Consultant[]>(`${urlAPI}/consultants`);
   }
 
   deleteConsultant(id: number): Observable<Consultant> {

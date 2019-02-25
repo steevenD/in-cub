@@ -90,9 +90,9 @@ import { ConsultantCardComponent } from './home/components/consultant-card/consu
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    ),
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, {dataEncapsulation: false}
+    // ),
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,

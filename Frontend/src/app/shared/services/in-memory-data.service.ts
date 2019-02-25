@@ -20,7 +20,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const consultants = this.consultantServiceMock.getConsultansMock();
     const startups = this.startupServiceMock.getStartupsMock();
     const users = this.userMockService.getUsersMock();
-    return {consultants, startups, users};
+    return { startups, users};
   }
 
   genId<T extends Consultant | Startup | User>(table: T[]): number {
