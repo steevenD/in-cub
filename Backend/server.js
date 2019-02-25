@@ -1,3 +1,4 @@
+
 var Consultant = require('./app/model/consultant.model.js');
 
 var express = require('express');
@@ -36,32 +37,19 @@ var server = app.listen(8080, function () {
 /**
  * to init with account
  */
-function initial(){
-	/**Role.count( (err, count) => {
-		if(!err && count === 0) {
-			 // USER Role ->
-			new Role({
-				name: 'USER'
-			}).save( err => {
-				if(err) return console.error(err.stack)
-				console.log("USER_ROLE is added")
-			});
+function initial() {
 
-			// ADMIN Role ->
-			new Role({
-				name: 'ADMIN'
-			}).save( err => {
-				if(err) return console.error(err.stack)
-				console.log("ADMIN_ROLE is added")
-			});
-
-			// PM Role ->
-			new Role({
-				name: 'PM'
-			}).save(err => {
-				if(err) return console.error(err.stack)
-				console.log("PM_ROLE is added")
-			});
-		}
-	});**/
+    Consultant.count((err, count) => {
+        if (!err && count === 0) {
+            // USER Role ->
+            new Consultant({
+                firstname: 'Steeven',
+                lastname: 'Demay',
+                description: 'des'
+            }).save(err => {
+                if (err) return console.error(err.stack)
+                console.log("USER_ROLE is added")
+            });
+        }
+    });
 }
