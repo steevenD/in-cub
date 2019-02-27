@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Startup} from '../startup.model';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {httpOptions} from '../../shared/env';
+import {httpOptions, urlAPI} from '../../shared/env';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Injectable({
@@ -50,21 +50,21 @@ export class StartupService {
 
 
   getStartUps(): Observable<Startup[]> {
-    // return this.http.get<Startup[]>(urlAPI + 'startups');
-    return this.http.get<Startup[]>('api/startups');
+    return this.http.get<Startup[]>(`${urlAPI}/startups`);
+    // return this.http.get<Startup[]>('api/startups');
   }
 
   deleteStartUp(id: number) {
     // return this.http.delete(urlAPI + `startups/${id}`);
-    return this.http.delete(`api/startups/${id}`);
+    return this.http.delete(`${urlAPI}/startup/${id}`);
   }
 
   updateStartUp(startup: Startup) {
     // return this.http.post(urlAPI + `startups`, startup, httpOptions);
-    return this.http.post('api/startups', startup, httpOptions);
+    return this.http.put(`${urlAPI}/startup/${startup.id}`, startup, httpOptions);
   }
 
   addStartUp(startUp: Startup) {
-    return this.http.post<Startup>(`/api/startups`, startUp, httpOptions);
+    return this.http.post<Startup>(`${urlAPI}/startup`, startUp, httpOptions);
   }
 }

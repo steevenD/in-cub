@@ -45,7 +45,7 @@ export class UpdateStartupComponent implements OnInit {
   handleClickUpdateStartup(fGroup: FormGroup) {
     this.dialogRef.close();
     this.dialogRef.afterClosed().subscribe(() => {
-      const startUpToUpdate: Startup = this.startupService.transformFormToStartUp(fGroup, this.data.startUp.id);
+      const startUpToUpdate: Startup = this.startupService.transformFormToStartUp(fGroup, this.data.startUp._id);
       this.startupService.updateStartUp(startUpToUpdate).subscribe(() => {
         this.spinnerService.show();
         this.startupService.setStartupChange(true);

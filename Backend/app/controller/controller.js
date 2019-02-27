@@ -137,10 +137,9 @@ exports.getAllStartups = (req, res) => {
                     message: "Interne error"
                 });
             }
-            res.status(200).json({
-                "description": "List of startups",
-                "startups": startups
-            });
+            res.status(200).send(
+                startups
+            );
         });
 };
 
@@ -159,10 +158,7 @@ exports.deleteStartup = (req, res) => {
 exports.updateStartup = (req, res) => {
     Startup.findByIdAndUpdate(req.params.idStartup, req.body, (err, startup)=> {
         if (err) return res.status(500).send(err);
-        return res.send({
-			'message': 'startup change',
-			'new': req.body
-		});
+        return res.send(startup);
     });
 };
 
