@@ -27,7 +27,7 @@ export class HandleStartupComponent implements OnInit {
         this.followModalAction();
       } else {
         this.router.navigate(['login']);
-        this.snackBar.open('Connectez-vous', 'Close', {
+        this.snackBar.open('Login please', 'Close', {
           duration: 3000
         });
       }
