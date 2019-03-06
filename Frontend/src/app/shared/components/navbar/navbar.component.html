@@ -1,8 +1,8 @@
 <mat-toolbar class="toolbar">
   <span class="action" routerLink="/">In-cub</span>
   <a mat-button routerLink="/">Home</a>
-  <a mat-button routerLink="/startups">Startups</a>
-  <a mat-button routerLink="/consultants">Consultants</a>
+  <a mat-button *ngIf="userConnected" routerLink="/startups">Startups</a>
+  <a mat-button *ngIf="userConnected" routerLink="/consultants">Consultants</a>
   <span class="example-spacer"></span>
   <a *ngIf="!userConnected" mat-button routerLink="/register">Register</a>
   <a *ngIf="!userConnected" mat-button routerLink="/login">Login</a>

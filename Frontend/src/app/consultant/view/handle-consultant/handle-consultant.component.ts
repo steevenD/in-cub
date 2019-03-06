@@ -2,6 +2,9 @@ import { Consultant } from './../../consultant.model';
 import { Component, OnInit } from '@angular/core';
 import {ConsultantService} from '../../services/consultant.service';
 import {SpinnerService} from "../../../shared/services/spinner.service";
+import {UserService} from "../../../auth/services/user.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-handle-consultant',
@@ -13,11 +16,24 @@ export class HandleConsultantComponent implements OnInit {
   consultants: Consultant[];
 
   constructor(private consultantService: ConsultantService,
-              private spinnerService: SpinnerService) { }
+              private spinnerService: SpinnerService,
+              private userService: UserService,
+              private router: Router,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.getConsultants();
-    this.followModalAction();
+    this.userService.connected$.subscribe(isConnected => {
+      if (isConnected) {
+        this.getConsultants();
+        this.followModalAction();
+      } else {
+        this.router.navigate(['login']);
+        this.snackBar.open('Connectez-vous', 'Close', {
+          duration: 3000
+        });
+      }
+    });
+
   }
 
   followModalAction() {

@@ -12,9 +12,9 @@ import { HandleStartupComponent } from './startup/view/handle-startup/handle-sta
 const routes: Routes = [
   { path: '', component: HomeComponent, data: {title: 'Home'}},
   { path: 'startups', component: HandleStartupComponent, data: {title: 'Startups'}},
-  { path: 'startup/new', component: FormStartupComponent, data: {title: 'Add startup'}},
+  // { path: 'startup/new', component: FormStartupComponent, data: {title: 'Add startup'}},
   { path: 'consultants', component: HandleConsultantComponent, data: {title: 'Consultants'}},
-  { path: 'consultant/new', component: FormConsultantComponent, data: {title: 'Add consultant'}},
+  // { path: 'consultant/new', component: FormConsultantComponent, data: {title: 'Add consultant'}},
   { path: 'login', component: LoginComponent, data: {title: 'Login'}},
   { path: 'register', component: RegisterComponent, data: {title: 'Register'}},
   { path: 'notFound', component: NotFoundComponent, data: {title: 'Error'}},

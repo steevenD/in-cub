@@ -21,8 +21,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.generateForm();
-
-
   }
 
   generateForm() {
@@ -30,10 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.userService.searchUser(this.fGroup.value.email, this.fGroup.value.password).subscribe(users => {
-      localStorage.setItem('userConnected', users[0].id.toString());
+    this.userService.login(this.fGroup.value.email, this.fGroup.value.password).subscribe((jwtInfo: any) => {
+      console.log(jwtInfo);
+      localStorage.setItem('userConnected', jwtInfo);
       this.userService.setConnected(true);
-      this.snackBar.open('Hi ' + users[0].firstname + ' !', 'Close', {
+      this.snackBar.open('Hi ' + jwtInfo.user.firstname + ' !', 'Close', {
         duration: 3000
       });
       this.router.navigate(['/']);

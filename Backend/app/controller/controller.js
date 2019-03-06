@@ -12,8 +12,6 @@ var bcrypt = require('bcryptjs');
  */
 exports.signup = (req, res) => {
 	// Save User to Database
-	console.log("Processing func -> SignUp");
-
 	const user = new User({
 		firstname: req.body.firstname,
 		lastname: req.body.lastname,
@@ -25,10 +23,11 @@ exports.signup = (req, res) => {
     user.save().then(savedUser => {
 	
 		savedUser.save(function (err) {
-			if (err) 
-				res.status(500).send("Error -> " + err);
-			console.log('cc');
-			res.send("User registered successfully!");
+			if (err) {
+                res.status(500).send("Error -> " + err);
+            } else {
+                res.status(200);
+            }
 		});
     }).catch(err => {
         res.status(500).send("Fail! Error -> " + err);
@@ -60,7 +59,12 @@ exports.signin = (req, res) => {
 		  expiresIn: 86400 // expires in 24 hours
 		});
 		
-		res.status(200).send({ auth: true, accessToken: token });
+		res.status(200).send({ auth: true, accessToken: token, user: {
+			id: user.id,
+			firstname: user.firstname,
+			lastname: user.lastname,
+			email: user.email
+			} });
 	});
 };
 
@@ -117,8 +121,6 @@ exports.deleteConsultant = (req, res) => {
 
 
 exports.updateConsultant = (req, res) => {
-    console.log('rrr');
-    console.log('rrr', req.body);
     Consultant.findByIdAndUpdate(req.params.idConsultant, req.body, (err, consultant)=> {
         if (err) return res.status(500).send(err);
         return res.send(consultant);

@@ -1,5 +1,7 @@
 
 var Consultant = require('./app/model/consultant.model.js');
+const User = require('./app/model/user.model.js');
+
 var cors = require('cors');
 
 var express = require('express');
@@ -30,8 +32,8 @@ mongoose.connect(config.url, { useNewUrlParser: true })
 // Create a Server
 var server = app.listen(8080, function () {
  
-  var host = server.address().address
-  var port = server.address().port
+  var host = server.address().address;
+  var port = server.address().port;
  
   console.log("App listening at http://%s:%s", host, port)
 });
@@ -43,15 +45,28 @@ function initial() {
 
     Consultant.count((err, count) => {
         if (!err && count === 0) {
-            // USER Role ->
             new Consultant({
                 firstname: 'Steeven',
                 lastname: 'Demay',
                 description: 'des'
             }).save(err => {
                 if (err) return console.error(err.stack)
-                console.log("USER_ROLE is added")
+                console.log("Consultant is added")
             });
         }
     });
-}
+
+    User.count((err, count) => {
+        if (!err && count === 0) {
+            new User({
+                firstname: 'Steeven',
+                lastname: 'Demay',
+                email: 'steeven.demay@orange.fr',
+                // mdp : 1234test
+                password: '$2y$08$niQrehhygJVytw8OGleibuznXG5h/wsFZGGMWDtdLxbfWh3RFzMPC',
+            }).save(err => {
+                if (err) return console.error(err.stack);
+                console.log("User is added")
+            });
+        }
+    })}

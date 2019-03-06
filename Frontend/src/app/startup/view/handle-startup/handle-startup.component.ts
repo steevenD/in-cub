@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {StartupService} from '../../services/startup.service';
 import {Startup} from '../../startup.model';
 import {SpinnerService} from "../../../shared/services/spinner.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material";
+import {UserService} from "../../../auth/services/user.service";
 
 @Component({
   selector: 'app-handle-startup',
@@ -12,11 +15,23 @@ export class HandleStartupComponent implements OnInit {
 
   startUps: Startup[];
 
-  constructor(private startUpService: StartupService, private spinnerService: SpinnerService) { }
+  constructor(private startUpService: StartupService, private spinnerService: SpinnerService,
+              private router: Router,
+              private userService: UserService,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.getStartUps();
-    this.followModalAction();
+    this.userService.connected$.subscribe(isConnected => {
+      if (isConnected) {
+        this.getStartUps();
+        this.followModalAction();
+      } else {
+        this.router.navigate(['login']);
+        this.snackBar.open('Connectez-vous', 'Close', {
+          duration: 3000
+        });
+      }
+    });
   }
 
   followModalAction() {

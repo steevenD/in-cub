@@ -6,7 +6,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { User } from '../user.model';
-import {httpOptions} from '../../shared/env';
+import {httpOptions, urlAPI} from '../../shared/env';
 import { MatchPassword } from '../validators/match-password.validator';
 
 @Injectable({
@@ -67,12 +67,18 @@ export class UserService {
     return this.http.get<User[]>('api/users');
   }
 
-  add(user: User) {
-    return this.http.post<User>('api/users', user, httpOptions);
+  register(user: User) {
+    return this.http.post<User>(`${urlAPI}/auth/signup`, user, httpOptions);
   }
 
-  searchUser(email: string, password: string): Observable<User[]> {
+  login(email: string, password: string) {
     //TODO
-    return this.http.get<User[]>('api/users');
+    // return this.http.get<User[]>('api/users');
+
+    const param = {
+      email: email,
+      password: password
+    };
+    return this.http.post(`${urlAPI}/auth/signin`, param, httpOptions);
   }
 }
