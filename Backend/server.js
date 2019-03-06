@@ -1,7 +1,11 @@
 
+
+var faker = require('faker');
+
 var Consultant = require('./app/model/consultant.model.js');
 const User = require('./app/model/user.model.js');
 
+var Startup = require('./app/model/startup.model.js');
 var cors = require('cors');
 
 var express = require('express');
@@ -43,19 +47,6 @@ var server = app.listen(8080, function () {
  */
 function initial() {
 
-    Consultant.count((err, count) => {
-        if (!err && count === 0) {
-            new Consultant({
-                firstname: 'Steeven',
-                lastname: 'Demay',
-                description: 'des'
-            }).save(err => {
-                if (err) return console.error(err.stack)
-                console.log("Consultant is added")
-            });
-        }
-    });
-
     User.count((err, count) => {
         if (!err && count === 0) {
             new User({
@@ -69,4 +60,52 @@ function initial() {
                 console.log("User is added")
             });
         }
-    })}
+    });
+
+    Consultant.count((err, count) => {
+        if (!err && count === 1) {
+            for (let i = 0; i < 30; i++) {
+                mockStartup().save(err => {
+                    if (err) return console.error(err.stack)
+                    console.log("CONSULTANT is added")
+                });
+            };
+        }
+    });
+}
+
+function mockConsultant() {
+    consultant = new Consultant({
+        firstname: faker.name.firstName(),
+		lastname: faker.name.lastName(),
+        description: faker.name.jobDescriptor()
+    });
+    consultant.save(err => {
+        if (err) return console.error(err.stack)
+        console.log("CONSULTANT is added")
+    });
+    return consultant;
+}
+
+function mockStartup(i) {
+    if (i % 2 === 0) {
+        return new Startup({
+            name: faker.company.companyName(),
+            businessLine: faker.commerce.department(),
+            legalRepresentativeName: faker.finance.accountName(),
+            cofounderNumber: 3,
+            description: faker.company.catchPhraseDescriptor(),
+            address: faker.address.streetAddress(),
+            consultant: mockConsultant()
+        });
+    }
+    return new Startup({
+        name: faker.company.companyName(),
+        businessLine: faker.commerce.department(),
+        legalRepresentativeName: faker.finance.accountName(),
+        cofounderNumber: 1,
+        description: faker.company.catchPhraseDescriptor(),
+        address: null,
+        consultant: mockConsultant()
+    });
+}

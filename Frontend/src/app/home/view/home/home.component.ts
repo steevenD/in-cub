@@ -22,18 +22,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getStartUps();
-    this.getConsultant();
+    this.getConsultants();
   }
 
   getStartUps() {
     this.startUpService.getStartUps().subscribe(startups => {
       this.startUps = startups;
+      console.log(this.startUps);
     });
   }
 
-  getConsultant() {
+  getConsultants() {
     this.consultantService.getConsultants().subscribe(consultants => {
       this.consultants = consultants;
+      console.log(this.consultants);
     });
   }
 }
