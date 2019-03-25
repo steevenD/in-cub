@@ -28,14 +28,12 @@ export class HomeComponent implements OnInit {
   getStartUps() {
     this.startUpService.getStartUps().subscribe(startups => {
       this.startUps = startups;
-      console.log(this.startUps);
     });
   }
 
   getConsultants() {
     this.consultantService.getConsultants().subscribe(consultants => {
       this.consultants = consultants;
-      console.log(this.consultants);
     });
   }
 }
