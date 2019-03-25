@@ -36,7 +36,7 @@ export class StartupService {
 
   transformFormToStartUp(form: FormGroup, id = null): Startup {
     const startup: Startup = {
-      id: id,
+      _id: id,
       name: form.get('name').value,
       businessLine: form.get('businessLine').value,
       legalRepresentativeName: form.get('legalRepresentativeName').value,
@@ -61,7 +61,7 @@ export class StartupService {
 
   updateStartUp(startup: Startup) {
     // return this.http.post(urlAPI + `startups`, startup, httpOptions);
-    return this.http.put(`${urlAPI}/startup/${startup.id}`, startup, httpOptions);
+    return this.http.put(`${urlAPI}/startup/${startup._id}`, startup, httpOptions);
   }
 
   addStartUp(startUp: Startup) {

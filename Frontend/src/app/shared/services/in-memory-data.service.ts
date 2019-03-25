@@ -23,7 +23,7 @@ export class InMemoryDataService implements InMemoryDbService {
     return { startups, users};
   }
 
-  genId<T extends Consultant | Startup | User>(table: T[]): number {
-    return table.length > 0 ? Math.max(...table.map(t => t.id)) + 1 : 11;
+  genId<T extends Consultant | Startup | User | any>(table: T[]): number {
+    return table.length > 0 ? Math.max(...table.map(t => t._id || t.id)) + 1 : 11;
   }
 }

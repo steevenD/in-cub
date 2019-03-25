@@ -26,7 +26,7 @@ exports.signup = (req, res) => {
 			if (err) {
                 res.status(500).send("Error -> " + err);
             } else {
-                res.status(200);
+                return res.status(200).send();
             }
 		});
     }).catch(err => {

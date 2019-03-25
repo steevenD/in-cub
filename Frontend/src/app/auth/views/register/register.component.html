@@ -1,6 +1,7 @@
-<form *ngIf="fGroup" (ngSubmit)="register()" [formGroup]="fGroup">
+<form *ngIf="fGroup" (ngSubmit)="register()" [formGroup]="fGroup" class="content">
+  <h2>Register</h2>
   <div class="example-container">
-    <div class="flex jc-sb">
+    <div class="flex">
       <mat-form-field>
         <input matInput placeholder="Firstname *" [formControl]="fGroup.get('firstname')">
         <mat-error *ngIf="fGroup.get('firstname').hasError('required')">The field is required</mat-error>
@@ -20,7 +21,7 @@
         </mat-form-field>
     </div>
 
-    <div class="flex jc-sb">
+    <div class="flex">
       <mat-form-field>
         <input matInput type="password" placeholder="Password *" [formControl]="fGroup.get('password')">
         <mat-error *ngIf="fGroup.get('password').hasError('required')">The field is required</mat-error>

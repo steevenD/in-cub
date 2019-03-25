@@ -1,17 +1,17 @@
 
 export class Consultant {
-  id: number;
+  _id: number;
   lastname: string;
   firstname: string;
   description: string;
 
   constructor(
-    id: number,
+    _id: number,
     lastname: string,
     firstname: string,
     description: string
   ) {
-    this.id = id;
+    this._id = _id;
     this.lastname = lastname;
     this.firstname = firstname;
     this.description = description;

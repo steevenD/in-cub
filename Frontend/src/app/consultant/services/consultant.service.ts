@@ -33,7 +33,7 @@ export class ConsultantService {
 
   transformFormToConsultant(form: FormGroup, id = null): Consultant {
     const consultant: Consultant = {
-      id: id,
+      _id: id,
       firstname: form.get('firstname').value,
       lastname: form.get('lastname').value,
       description: form.get('description').value
@@ -54,6 +54,6 @@ export class ConsultantService {
   }
 
   updateConsultant(consultant: Consultant) {
-    return this.http.put(`${urlAPI}/consultant/${consultant.id}`, consultant, httpOptions);
+    return this.http.put(`${urlAPI}/consultant/${consultant._id}`, consultant, httpOptions);
   }
 }

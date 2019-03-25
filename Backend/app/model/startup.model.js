@@ -1,7 +1,8 @@
 const Consultant = require('../model/consultant.model.js');
 
 const mongoose = require('mongoose'), Schema = mongoose.Schema;
- 
+const ConsultantSchema = mongoose.model('Consultant').schema;
+
 const StartupSchema = mongoose.Schema({
 		name: String,
 		businessLine: String,
@@ -9,7 +10,7 @@ const StartupSchema = mongoose.Schema({
         cofounderNumber: Number,
         description: String,
         address: String,
-        consultant: {type: mongoose.Schema.Types.ObjectId, ref: 'Consultant'}
+        consultant: ConsultantSchema
 });
 
 module.exports = mongoose.model('Startup', StartupSchema);

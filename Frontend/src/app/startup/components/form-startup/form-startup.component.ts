@@ -24,7 +24,7 @@ export class FormStartupComponent implements OnInit {
   }
 
   compareFn(v1: Consultant, v2: Consultant): boolean {
-    return v1 && v2 ? v1.id === v2.id : v1 === v2;
+    return v1 && v2 ? v1._id === v2._id : v1 === v2;
   }
 
   getAllConsultants() {

@@ -1,4 +1,4 @@
-<button *ngIf="!displayForm" (click)="displayForm = !displayForm" mat-button color="primary">Display the form</button>
+<button *ngIf="!displayForm" (click)="displayForm = !displayForm" mat-button color="primary">Display the form to add a new startUp</button>
 <button *ngIf="displayForm" (click)="displayForm = !displayForm" mat-button color="primary">Hide the form</button>
 <mat-slide-toggle [checked]="displayForm" color="primary" (change)="displayForm = !displayForm" ></mat-slide-toggle>
 

@@ -1,6 +1,4 @@
-import { HomeComponent } from './../../../home/view/home/home.component';
 import { Router } from '@angular/router';
-import { InMemoryDataService } from './../../../shared/services/in-memory-data.service';
 import { User } from 'src/app/auth/user.model';
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -37,14 +35,16 @@ export class RegisterComponent implements OnInit {
       this.fGroup.value.email,
       this.fGroup.value.password
     );
-    console.log(user);
     this.userService.register(user)
         .subscribe(() => {
-          alert('rrr');
           this.snackBar.open('Your account has been created, you can now log in.', 'Close', {
             duration: 5000
           });
-          this.router.navigate(['/']);
-        });
+          this.router.navigate(['login']);
+        },
+          (err) => this.snackBar.open(err.error, 'Close', {
+            duration: 5000
+          })
+        );
   }
 }

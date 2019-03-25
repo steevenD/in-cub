@@ -1,7 +1,7 @@
 import { Consultant } from './../consultant/consultant.model';
 
 export class Startup {
-  id: number;
+  _id: number;
   name: string;
   businessLine: string;
   legalRepresentativeName: string;
@@ -11,7 +11,7 @@ export class Startup {
   consultant: Consultant;
 
   constructor(
-    id: number,
+    _id: number,
     name: string,
     businessLine: string,
     legalRepresentativeName: string,
@@ -20,7 +20,7 @@ export class Startup {
     address: string,
     consultant: Consultant
   ) {
-    this.id = id;
+    this._id = _id;
     this.name = name;
     this.businessLine = businessLine;
     this.legalRepresentativeName = legalRepresentativeName;
