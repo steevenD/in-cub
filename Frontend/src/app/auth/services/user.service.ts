@@ -24,7 +24,6 @@ export class UserService {
   constructor(private http: HttpClient, private fb: FormBuilder) {
     FB.init({
       appId: '316581045720981',
-      secret: 'a8eeb4281ec4a59e5f8de20e4d618670',
       cookie: false,  // enable cookies to allow the server to access the session
       xfbml: true,  // parse social plugins on this page
       version: 'v2.8' // use graph api version 2.5
