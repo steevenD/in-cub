@@ -8,12 +8,11 @@ import { Injectable } from '@angular/core';
 import { User } from '../user.model';
 import {httpOptions, urlAPI} from '../../shared/env';
 import { MatchPassword } from '../validators/match-password.validator';
-
+declare const FB;
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
   public users = new BehaviorSubject<User[]>([]);
 
   /**
@@ -22,8 +21,39 @@ export class UserService {
   private connected = new BehaviorSubject(false);
   public connected$ = this.connected.asObservable();
 
-  constructor(private http: HttpClient, private fb: FormBuilder) { }
+  constructor(private http: HttpClient, private fb: FormBuilder) {
+    FB.init({
+      appId: '316581045720981',
+      secret: 'a8eeb4281ec4a59e5f8de20e4d618670',
+      cookie: false,  // enable cookies to allow the server to access the session
+      xfbml: true,  // parse social plugins on this page
+      version: 'v2.8' // use graph api version 2.5
+    });
 
+    FB.login((response: any) => {
+      console.log(response);
+      if (response.status === 'connected') {
+        // Logged into your app and Facebook.
+        this.personalInformationFacebook(response.authResponse.userID, response.authResponse.accessToken);
+      } else if (response.status === 'not_authorized') {
+        // The person is logged into Facebook, but not your app.
+      } else {
+        // The person is not logged into Facebook, so we're not sure if
+        // they are logged into this app or not.
+      }
+
+    }, {scope: 'user_friends,email'});
+  }
+
+  personalInformationFacebook(userId, accessToken) {
+    FB.api(
+      "/" + userId + '?fields=id,name,first_name,email,gender,picture.width(150).height(150),age_range,friends',
+      (result) => {
+        console.log("result ===", result);
+        if (result && !result.error) {
+        }
+      });
+  }
 
   /**
    * to set if user is connected
