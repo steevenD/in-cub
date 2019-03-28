@@ -47,7 +47,6 @@ export class RowConsultantComponent implements OnInit, OnChanges {
   }
 
   handleClickDeleteConsultant(idConsultant: number) {
-    console.log(idConsultant);
     this.consultantService.deleteConsultant(idConsultant).subscribe(() => {
         this.spinnerService.show();
         this.consultantService.setConsultantChange(true);

@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userService.login(this.fGroup.value.email, this.fGroup.value.password).subscribe((jwtInfo: any) => {
-      console.log(jwtInfo);
       localStorage.setItem('userConnected', jwtInfo);
       this.userService.setConnected(true);
       this.snackBar.open('Hi ' + jwtInfo.user.firstname + ' !', 'Close', {
@@ -37,5 +36,14 @@ export class LoginComponent implements OnInit {
       });
       this.router.navigate(['/']);
     });
+  }
+
+  loginFb() {
+    this.userService.loginFb();
+    let jwtInfo = JSON.parse(localStorage.getItem('userConnected'));
+    this.snackBar.open('Hi ' + jwtInfo.user.firstname + ' !', 'Close', {
+      duration: 3000
+    });
+    this.router.navigate(['/']);
   }
 }
