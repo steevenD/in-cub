@@ -9,6 +9,8 @@ var Startup = require('./app/model/startup.model.js');
 var cors = require('cors');
 
 var express = require('express');
+var fs = require('fs');
+var https = require('https');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -34,12 +36,13 @@ mongoose.connect(config.url, { useNewUrlParser: true })
 });
  
 // Create a Server
-var server = app.listen(8080, function () {
- 
-  var host = server.address().address;
-  var port = server.address().port;
- 
-  console.log("App listening at http://%s:%s", host, port)
+https.createServer({
+    key: fs.readFileSync('server.key'),
+    cert: fs.readFileSync('server.cert')
+}, app)
+.listen(8080, function() {
+  console.log("App listening at https://localhost:8080");
+
 });
 
 /**

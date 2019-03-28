@@ -4,4 +4,4 @@ export const  httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-export const urlAPI = 'http://localhost:8080/api';
+export const urlAPI = 'https://localhost:8080/api';
