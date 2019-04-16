@@ -8,7 +8,6 @@ import { Injectable } from '@angular/core';
 import { User } from '../user.model';
 import {httpOptions, urlAPI} from '../../shared/env';
 import { MatchPassword } from '../validators/match-password.validator';
-declare const FB;
 @Injectable({
   providedIn: 'root'
 })
@@ -78,47 +77,5 @@ export class UserService {
       password: password
     };
     return this.http.post(`${urlAPI}/auth/signin`, param, httpOptions);
-  }
-
-  loginFb(): any {
-    FB.init({
-      appId: '316581045720981',
-      cookie: false,  // enable cookies to allow the server to access the session
-      xfbml: true,  // parse social plugins on this page
-      version: 'v2.8' // use graph api version 2.5
-    });
-
-    FB.login((response: any) => {
-      // console.log('test', response);
-      if (response.status === 'connected') {
-        // Logged into your app and Facebook.
-         return this.personalInformationFacebook(response.authResponse.userID, response.authResponse.accessToken);
-
-      } else if (response.status === 'not_authorized') {
-        return {};
-        // The person is logged into Facebook, but not your app.
-      } else {
-        return {};
-        // The person is not logged into Facebook, so we're not sure if
-        // they are logged into this app or not.
-      }
-
-    }, {scope: 'user_friends,email'});
-  }
-
-  personalInformationFacebook(userId, accessToken) {
-    FB.api(
-      '/' + userId + '?fields=id,name,first_name,email,gender,picture.width(150).height(150),age_range,friends',
-      (result) => {
-        const jwtInfo: any =
-        { auth: true, accessToken: accessToken, user: {
-          id: result.id,
-          firstname: result.first_name,
-          lastname: result.name,
-          email: result.email
-          } };
-        localStorage.setItem('userConnected', JSON.stringify(jwtInfo));
-        this.setConnected(true);
-      });
   }
 }

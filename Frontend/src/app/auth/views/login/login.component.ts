@@ -37,13 +37,4 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     });
   }
-
-  loginFb() {
-    this.userService.loginFb();
-    let jwtInfo = JSON.parse(localStorage.getItem('userConnected'));
-    this.snackBar.open('Hi ' + jwtInfo.user.firstname + ' !', 'Close', {
-      duration: 3000
-    });
-    this.router.navigate(['/']);
-  }
 }
