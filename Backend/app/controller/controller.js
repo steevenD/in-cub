@@ -35,21 +35,26 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
-	console.log("Sign-In");
 
 	User.findOne({ email: req.body.email })
 	.exec((err, user) => {
 		if (err){
 			if(err.kind === 'ObjectId') {
 				return res.status(404).send({
-					message: "User not found with email = " + req.body.email
+                    reason: "User not found with email = " + req.body.email
 				});                
 			}
 			return res.status(500).send({
-				message: "Error retrieving User with email = " + req.body.email
+                reason: "Error retrieving User with email = " + req.body.email
 			});
 		}
-					
+
+		if(user === null) {
+            return res.status(404).send({
+                reason: "User not found with email = " + req.body.email
+            });
+        }
+
 		var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
 		if (!passwordIsValid) {
 			return res.status(401).send({ auth: false, accessToken: null, reason: "Invalid Password!" });

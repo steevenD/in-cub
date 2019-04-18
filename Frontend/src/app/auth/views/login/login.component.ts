@@ -35,6 +35,12 @@ export class LoginComponent implements OnInit {
         duration: 3000
       });
       this.router.navigate(['/']);
-    });
+    },
+      (err) => {
+      console.log(err);
+        this.snackBar.open(err.error.reason, 'Close', {
+          duration: 3000
+        });
+      });
   }
 }
