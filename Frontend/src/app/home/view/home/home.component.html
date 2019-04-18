@@ -11,7 +11,7 @@
       <mat-grid-list cols="3" rowHeight="15rem">
         <mat-grid-tile *ngFor="let startup of startUps.slice(0, cardsToDisplay); index as i" >
           <app-startup-card [startup]="startup"></app-startup-card>
-          <mat-icon *ngIf="i === cardsToDisplay - 1" class="example-icon action" matTooltip="See all startups">arrow_forward_ios</mat-icon>
+          <mat-icon *ngIf="i === cardsToDisplay - 1" class="see-more action" matTooltip="See all startups">arrow_forward_ios</mat-icon>
         </mat-grid-tile>
       </mat-grid-list>
     </mat-card-content>
@@ -26,7 +26,7 @@
       <mat-grid-list cols="3" rowHeight="15rem">
           <mat-grid-tile *ngFor="let consultant of consultants.slice(0, cardsToDisplay); index as i" >
             <app-consultant-card [consultant]="consultant"></app-consultant-card>
-          <mat-icon *ngIf="i === cardsToDisplay - 1" class="example-icon action" matTooltip="See all consultants">arrow_forward_ios</mat-icon>
+          <mat-icon *ngIf="i === cardsToDisplay - 1" class="see-more action" matTooltip="See all consultants">arrow_forward_ios</mat-icon>
         </mat-grid-tile>
       </mat-grid-list>
     </mat-card-content>

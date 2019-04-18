@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 body {
   margin: 0 !important;
 }
@@ -92,4 +92,50 @@ mat-error {
   display: flex;
   justify-content: space-evenly;
   margin-top: 43px;
+}
+
+.card-component {
+  width: 325px;
+  max-width: 325px;
+  height: 120px;
+  max-height: 120px;
+}
+
+mat-card-content {
+  padding: 10px 10px 10px 10px;
+}
+
+section {
+  box-shadow: 10px 5px 5px gainsboro;
+}
+
+body {
+  font-family: fantasy;
+}
+
+.mat-elevation-z8 {
+  display: contents;
+}
+
+.mat-column-actions {
+  min-width: 20% !important;
+}
+
+.mat-column-firstname, .mat-column-lastname, .mat-column-name, .mat-column-legalRepresentativeName {
+  min-width: 15% !important;
+}
+
+.mat-column-cofounderNumber {
+  min-width: 8% !important;
+}
+
+.mat-column-address {
+  min-width: 5% !important;
+}
+
+.truncate {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
