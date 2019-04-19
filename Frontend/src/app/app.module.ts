@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { InMemoryDataService } from './shared/services/in-memory-data.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -23,6 +24,30 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { LoginComponent } from './auth/views/login/login.component';
 import { RegisterComponent } from './auth/views/register/register.component';
 
+import {
+  MatPaginatorModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatTooltipModule,
+  MatCardModule,
+  MatGridListModule,
+  MatListModule,
+  MatFormFieldModule,
+  MatProgressSpinnerModule,
+  MatOptionModule, MatSelectModule, MatInputModule, MatDialogModule, MatButtonToggleModule, MatSlideToggleModule,
+  MatSnackBarModule
+} from '@angular/material';
+import {ReactiveFormsModule} from '@angular/forms';
+import { CreateStartupComponent } from './startup/components/create-startup/create-startup.component';
+import { UpdateStartupComponent } from './startup/components/update-startup/update-startup.component';
+import { UpdateConsultantComponent } from './consultant/components/update-consultant/update-consultant.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { StartupCardComponent } from './home/components/startup-card/startup-card.component';
+import { ConsultantCardComponent } from './home/components/consultant-card/consultant-card.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,17 +65,50 @@ import { RegisterComponent } from './auth/views/register/register.component';
     NavbarComponent,
     NotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateStartupComponent,
+    UpdateStartupComponent,
+    UpdateConsultantComponent,
+    SpinnerComponent,
+    StartupCardComponent,
+    ConsultantCardComponent
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatPaginatorModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    )
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, {dataEncapsulation: false}
+    // ),
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatCardModule,
+    MatGridListModule,
+    MatListModule
   ],
-  providers: [],
+  providers: [
+    AddressPipe,
+    NumberCofounderPipe
+  ],
+  entryComponents: [
+    UpdateStartupComponent,
+    UpdateConsultantComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

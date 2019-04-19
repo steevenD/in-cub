@@ -1,0 +1,13 @@
+.section  {
+  width: 98%;
+}
+
+.bienvenue {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.see-more {
+  padding-left: 20px;
+  font-size: 35px;
+}

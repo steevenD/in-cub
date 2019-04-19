@@ -1,4 +1,6 @@
+import { MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../auth/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  userConnected: Boolean = false;
+  constructor(private userService: UserService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    if (localStorage.getItem('userConnected')) {
+      this.userConnected = true;
+    }
+    this.followIfUserIsConnected();
   }
 
+  /**
+   * to follow if user is connected to change menu
+   */
+  followIfUserIsConnected() {
+    this.userService.connected$.subscribe(val => {
+      this.userConnected = val;
+    });
+  }
+
+  logout() {
+    this.userConnected = false;
+    localStorage.clear();
+    this.userService.setConnected(false);
+    this.snackBar.open('You have been disconnected.', 'Close', {
+      duration: 3000
+    });
+  }
 }

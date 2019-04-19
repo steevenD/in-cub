@@ -5,8 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class AddressPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return null;
+  transform(value: any): any {
+    if (value) {
+      return 'Yes';
+    } else {
+      return 'No';
+    }
   }
-
 }

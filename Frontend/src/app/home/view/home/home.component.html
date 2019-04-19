@@ -1,3 +1,34 @@
-<p>
-  home works!
+<p class="bienvenue">
+  Welcome to In-Cub the first application to manage your startUp incubators  <br>
+  Create an account quickly to discover the application! <mat-icon>thumb_up</mat-icon>
 </p>
+<section *ngIf="startUps"  class="action margin-10" routerLink="/startups">
+  <mat-card class="section">
+    <mat-card-header>
+      <mat-card-title>Startups</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list cols="3" rowHeight="15rem">
+        <mat-grid-tile *ngFor="let startup of startUps.slice(0, cardsToDisplay); index as i" >
+          <app-startup-card [startup]="startup"></app-startup-card>
+          <mat-icon *ngIf="i === cardsToDisplay - 1" class="see-more action" matTooltip="See all startups">arrow_forward_ios</mat-icon>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+</section>
+<section *ngIf="consultants"  class="action margin-10" routerLink="/consultants">
+  <mat-card class="section">
+    <mat-card-header>
+      <mat-card-title>Consultants</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list cols="3" rowHeight="15rem">
+          <mat-grid-tile *ngFor="let consultant of consultants.slice(0, cardsToDisplay); index as i" >
+            <app-consultant-card [consultant]="consultant"></app-consultant-card>
+          <mat-icon *ngIf="i === cardsToDisplay - 1" class="see-more action" matTooltip="See all consultants">arrow_forward_ios</mat-icon>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+</section>

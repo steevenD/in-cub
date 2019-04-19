@@ -1,2 +1,141 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+body {
+  margin: 0 !important;
+}
+
+.action {
+  cursor: pointer;
+}
+
+table {
+  width: 100% !important;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.as-c {
+  align-self: center;
+}
+
+.fg-1 {
+  flex-grow: 1;
+}
+
+.fd-c {
+  flex-direction: column !important;
+}
+
+.jc-sa{
+  justify-content: space-around;
+}
+
+.jc-sb{
+  justify-content: space-between;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.margin-10 {
+ margin: 10px;
+}
+
+span button.mat-raised-button {
+  margin: 5px !important;
+  width: 120px !important;
+}
+
+mat-error {
+  color: #ffff00 !important;
+  font-weight: bold !important;
+}
+
+/**
+  * style modal
+ */
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+
+.tittle-modal {
+  font-size: 18px;
+  background-color: #3f51b5;
+  color: #ffffff;
+  box-sizing: border-box;
+  padding: 12px;
+}
+
+.cross-modal{
+  text-align: right;
+  cursor: pointer;
+  background-color: inherit;
+  border: 0;
+  color: #ffffff;
+
+}
+.cross-modal:focus {outline:0;}
+
+.contain-modal {
+  padding: 30px;
+}
+
+.btn-modal {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 43px;
+}
+
+.card-component {
+  width: 325px;
+  max-width: 325px;
+  height: 120px;
+  max-height: 120px;
+}
+
+mat-card-content {
+  padding: 10px 10px 10px 10px;
+}
+
+section {
+  box-shadow: 10px 5px 5px gainsboro;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.mat-elevation-z8 {
+  display: contents;
+}
+
+.mat-column-actions {
+  min-width: 20% !important;
+}
+
+.mat-column-firstname, .mat-column-lastname, .mat-column-name, .mat-column-legalRepresentativeName {
+  min-width: 15% !important;
+}
+
+.mat-column-cofounderNumber {
+  min-width: 8% !important;
+}
+
+.mat-column-address {
+  min-width: 5% !important;
+}
+
+.truncate {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,3 +1,5 @@
-<p>
-  row-startup works!
-</p>
+<span *ngIf="row != 'actions'">{{displayRow}}</span>
+<span *ngIf="row === 'actions'">
+    <span><button (click)="handleClickUpdateStartup(startUp)" mat-raised-button color="accent">Update</button></span>
+    <span><button (click)="handleClickDeleteStartup(startUp._id)"  mat-raised-button color="warn">Delete</button></span>
+</span>

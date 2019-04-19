@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {ConsultantService} from '../../../consultant/services/consultant.service';
+import {Consultant} from '../../../consultant/consultant.model';
+import {SpinnerService} from "../../../shared/services/spinner.service";
 
 @Component({
   selector: 'app-form-startup',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormStartupComponent implements OnInit {
 
-  constructor() { }
+  consultants: Consultant[];
+
+  @Input()
+  fGroup: FormGroup;
+
+  constructor(private consultantService: ConsultantService,
+              private spinnerService: SpinnerService) { }
 
   ngOnInit() {
+    this.getAllConsultants();
   }
 
+  compareFn(v1: Consultant, v2: Consultant): boolean {
+    return v1 && v2 ? v1._id === v2._id : v1 === v2;
+  }
+
+  getAllConsultants() {
+    this.consultantService.getConsultants().subscribe( consultants => {
+      this.spinnerService.show();
+      this.consultants = consultants;
+    },
+      (err) => console.error(err),
+      () => this.spinnerService.hide());
+  }
 }

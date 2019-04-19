@@ -1,3 +1,23 @@
-<p>
-  login works!
-</p>
+<div class="content">
+  <h2>Login</h2>
+  <form *ngIf="fGroup" (ngSubmit)="login()" [formGroup]="fGroup">
+      <div class="example-container">
+        <div class="flex jc-sb">
+          <mat-form-field>
+              <input matInput placeholder="Email *" [formControl]="fGroup.get('email')">
+              <mat-error *ngIf="fGroup.get('email').hasError('required')">The field is required</mat-error>
+              <mat-error *ngIf="fGroup.get('email').hasError('email')">This field has to be an email</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="flex jc-sb">
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password *" [formControl]="fGroup.get('password')">
+            <mat-error *ngIf="fGroup.get('password').hasError('required')">The field is required</mat-error>
+          </mat-form-field>
+        </div>
+        <button mat-button type="submit" [disabled]="fGroup.invalid">Login</button>
+      </div>
+  </form>
+  <span>You do not have an account ? <a routerLink="/register">Click here to create an account</a></span>
+</div>
