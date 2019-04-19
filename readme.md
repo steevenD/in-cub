@@ -1,9 +1,9 @@
 # in-cub
-Application permettant de gérer des incubateurs de startup. 
-Devoir noté de 1ère année de master. 
+Application permettant de gÃ©rer des incubateurs de startup. 
+Devoir notÃ© de 1Ã¨re annÃ©e de master. 
 Front en Angular, back en nodejs/mongoDB.
 
-# Prérequis
+# PrÃ©requis
 - node v10
 - npm 
 - mongoDB
@@ -18,3 +18,7 @@ Front en Angular, back en nodejs/mongoDB.
 - `cd Frontend`
 - `npm start`
 - Ouvrir un navigateur sur `http://localhost:4200/`
+
+## Auteurs
+- Marion OLIVER
+- Steeven DEMAY
